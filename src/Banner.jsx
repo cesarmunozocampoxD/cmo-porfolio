@@ -16,7 +16,7 @@ const Banner = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, mb: 4 }}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ background: '#111' }}>
         <Toolbar>
           <IconButton

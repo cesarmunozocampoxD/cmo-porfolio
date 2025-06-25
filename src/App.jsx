@@ -11,10 +11,10 @@ function App() {
   return (
     <MUIRoot>
       <CssBaseline />
-      <Banner />
+      {/*<Banner /> */}
       <AboutMe />
     </MUIRoot>
-    
+
   )
 }
 
