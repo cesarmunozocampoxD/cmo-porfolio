@@ -326,7 +326,7 @@ const AboutMe = () => {
                 </Typography>
                 <Typography variant="body1" color="primary" sx={{ mb: 2 }}>
                   <Email sx={{ mr: 1, verticalAlign: 'middle' }} />
-                  alexsmith@example.com
+                  .....@example.com
                 </Typography>
               </Box>
               <Box>
