@@ -1,13 +1,13 @@
 // This file will contain the AboutMe component using MUI
 import React from 'react';
-import { 
-  Container, 
-  Typography, 
-  Avatar, 
-  Box, 
-  Paper, 
-  Button, 
-  Grid, 
+import {
+  Container,
+  Typography,
+  Avatar,
+  Box,
+  Paper,
+  Button,
+  Grid,
   Chip,
   Card,
   CardContent,
@@ -17,50 +17,144 @@ import {
   Stack,
   Divider
 } from '@mui/material';
-import { 
-  GitHub, 
-  LinkedIn, 
-  Twitter, 
-  Email 
+import {
+  GitHub,
+  LinkedIn,
+  Twitter,
+  Email,
+  PictureAsPdf,
+  Launch
 } from '@mui/icons-material';
+import profilePhoto from './assets/img/photo.jpg';
+
+// Profile data object containing all dynamic content
+const profile = {
+  personalInfo: {
+    name: "Cesar Muñoz Ocampo",
+    title: "Computer Systems Engineer",
+    aboutMe: `I am a Senior Fullstack Developer with solid experience in designing and developing web applications and microservices. I specialize in creating scalable 
+    and efficient solutions, both frontend and backend, working in cloud environments and with modern development methodologies.
+    I stand out for my proactive approach, problem-solving ability and ease of integrating into multidisciplinary teams.
+    My professional goal is to continue growing towards roles focused on software architecture, contributing technical and strategic vision to projects.`,
+    photo: profilePhoto
+  },
+  experience: [
+    {
+      period: 'September 2022 - Present',
+      title: 'Backend Developer',
+      institution: 'COPPEL S.A. de C.V.',
+      description: 'Development of RESTful API microservices deployed in development, QA, and production environments on GCP Cloud and collaboration in agile teams.',
+      type: 'Senior'
+    },
+    {
+      period: 'May 2022 - August 2022',
+      title: 'Backend Developer',
+      institution: 'Digital Agency Co.',
+      description: 'Development and maintenance of RESTful API services, deploying in development, QA, and production environments on GCP Cloud.',
+      type: 'Mid-Level'
+    },
+    {
+      period: 'March 2018 - May 2022',
+      title: 'Junior Developer',
+      institution: 'Full Stack Web Developer',
+      description: 'Development of web applications using technologies such as HTML, CSS, JavaScript and PHP. Participation in agile development projects and collaboration with multidisciplinary teams.',
+      type: 'Junior'
+    }
+  ],
+  education: [
+    {
+      period: '2015 - 2021',
+      title: 'Computer Systems Engineering',
+      institution: 'Universidad Tecnológica de Estudios Superiores de Ecatepec (TESE)',
+      description: 'Degree in Engineering with specialization in software and systems development.',
+      type: 'Degree'
+    },
+    {
+      period: '2022 - 2023',
+      title: 'Cloud Computing Certification',
+      institution: 'AWS Academy',
+      description: 'Professional certification in cloud services and distributed architectures.',
+      type: 'Certification'
+    },
+    {
+      period: '2023 - 2024',
+      title: 'English Language',
+      institution: 'Quick Learning',
+      description: 'Intensive English course.',
+      type: 'Course'
+    }
+  ],
+  skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Sass', 'Git', 'GitHub', 'Java', 'Spring Boot', 'MySQL', 'PostgreSQL', 'SQL Server', 'MongoDB', 'AWS', 'GCP', 'Docker', 'Kubernetes',
+    'Agile Methodologies', 'Redis', 'Checkmarx', 'SonarQube'
+  ],
+  projects: [
+    {
+      title: 'GMTLaboratory',
+      desc: 'Web application where technologies such as React, Java SpringBoot and AWS were used',
+      pdfLink: '/pdfs/gmtlaboratory-project.pdf',
+      githubLink: null,
+      isPrivate: true
+    },
+    {
+      title: 'aoe.gg',
+      desc: 'Personal API developed with Java SpringBoot and deployed on AWS',
+      pdfLink: '/pdfs/aoe-api-project.pdf',
+      githubLink: 'https://github.com/cesarmunozocampoxD/age.gg',
+      isPrivate: false
+    },
+    {
+      title: 'Portfolio Website',
+      desc: 'Personal portfolio website with responsive design using React and GitHub Pages',
+      pdfLink: '/pdfs/portfolio-project.pdf',
+      githubLink: 'https://github.com/cesarmunozocampoxD/cmo-porfolio',
+      isPrivate: false
+    }
+  ],
+  contact: {
+    email: 'cesar_munozocampo@hotmail.com',
+    social: {
+      github: 'https://github.com/cesarmunozocampoxD',
+      linkedin: 'https://www.linkedin.com/in/developer-cesar-munoz-ocampo/'
+    }
+  }
+};
 
 const AboutMe = () => {
   return (
     <Box>
       {/* Header Section with Purple Background */}
-      <Paper 
+      <Paper
         elevation={0}
-        sx={{ 
-          bgcolor: 'primary.main', 
-          color: 'primary.contrastText', 
-          py: 8, 
+        sx={{
+          bgcolor: 'primary.main',
+          color: 'primary.contrastText',
+          py: 8,
           textAlign: 'center',
           borderRadius: 0
         }}
       >
         <Container maxWidth="lg">
           <Avatar
-            alt="Alex Smith"
-            sx={{ 
-              width: { xs: 100, md: 120 }, 
-              height: { xs: 100, md: 120 }, 
+            alt={profile.personalInfo.name}
+            src={profile.personalInfo.photo}
+            sx={{
+              width: { xs: 200, md: 180 },
+              height: { xs: 200, md: 180 },
               mx: 'auto',
               mb: 3,
               bgcolor: 'primary.light',
               border: 2,
               borderColor: 'rgba(255,255,255,0.3)'
             }}
-          >
-            <Box sx={{ fontSize: { xs: '2rem', md: '2.5rem' } }}>👨‍💻</Box>
-          </Avatar>
+          />
           <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
-            Soy .....
+            I'm {profile.personalInfo.name}
           </Typography>
           <Typography variant="h5" gutterBottom sx={{ fontWeight: 300, mb: 4 }}>
-            Desarrollador Web
+            {profile.personalInfo.title}
           </Typography>
-          <Button 
-            variant="contained" 
+          <Button
+            variant="contained"
             size="large"
             onClick={() => {
               const contactSection = document.getElementById('contact-section');
@@ -68,14 +162,14 @@ const AboutMe = () => {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            sx={{ 
+            sx={{
               bgcolor: 'rgba(0,0,0,0.3)',
               '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
               textTransform: 'none',
               px: 4
             }}
           >
-            contactarme
+            Contact Me
           </Button>
         </Container>
       </Paper>
@@ -84,15 +178,13 @@ const AboutMe = () => {
         {/* About Me Section */}
         <Box sx={{ mb: 3 }}>
           <Grid container spacing={3} alignItems="center">
-           
+
             <Grid item xs={12} md={9}>
               <Typography variant="h4" component="h2" gutterBottom color="text.primary">
-                Sobre mí
+                About Me
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                Soy un desarrollador web con experiencia en la construcción de sitios y aplicaciones 
-                web. Me especializo en tecnologías frontend y estoy comprometido crear experiencias 
-                de usuario de alta calidad.
+                {profile.personalInfo.aboutMe}
               </Typography>
             </Grid>
           </Grid>
@@ -103,49 +195,20 @@ const AboutMe = () => {
         {/* Experience Section */}
         <Paper elevation={1} sx={{ p: 3, mb: 3, bgcolor: 'background.paper', textAlign: 'center' }}>
           <Typography variant="h4" component="h2" gutterBottom color="text.primary">
-            Experiencia
+            Experience
           </Typography>
           <Grid container spacing={1} sx={{ justifyContent: 'center' }}>
-            {[
-              {
-                period: '2022 - Presente',
-                title: 'Desarrollador Full Stack Senior',
-                institution: 'Tech Solutions Inc.',
-                description: 'Desarrollo y mantenimiento de aplicaciones web utilizando React, Spring Boot y bases de datos SQL.',
-                type: 'Senior'
-              },
-              {
-                period: '2020 - 2022',
-                title: 'Desarrollador Frontend',
-                institution: 'Digital Agency Co.',
-                description: 'Creación de interfaces de usuario responsivas y dinámicas. Trabajo con APIs REST.',
-                type: 'Mid-Level'
-              },
-              {
-                period: '2019 - 2020',
-                title: 'Desarrollador Junior',
-                institution: 'StartUp Solutions',
-                description: 'Desarrollo de funcionalidades web y mantenimiento de aplicaciones existentes.',
-                type: 'Junior'
-              },
-              {
-                period: '2018 - 2019',
-                title: 'Desarrollador Intern',
-                institution: 'Code Academy',
-                description: 'Aprendizaje de bases de programación y desarrollo de proyectos académicos.',
-                type: 'Intern'
-              }
-            ].map((experience, index) => (
+            {profile.experience.map((experience, index) => (
               <Grid item xs={6} sm={6} md={6} key={index}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 2, maxWidth: 500 }}>
                   <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600, mb: 1 }}>
                     {experience.period}
                   </Typography>
-                  <Chip 
-                    label={experience.type} 
-                    size="small" 
-                    variant="filled" 
-                    color="primary" 
+                  <Chip
+                    label={experience.type}
+                    size="small"
+                    variant="filled"
+                    color="primary"
                     sx={{ alignSelf: 'flex-start', mb: 1 }}
                   />
                   <Typography variant="h6" component="h3" gutterBottom color="primary.main" sx={{ fontWeight: 600 }}>
@@ -168,49 +231,20 @@ const AboutMe = () => {
         {/* Formation/Academy Section */}
         <Paper elevation={1} sx={{ p: 3, mb: 3, bgcolor: 'background.paper', textAlign: 'center' }}>
           <Typography variant="h4" component="h2" gutterBottom color="text.primary">
-            Formación Académica
+            Academic Background
           </Typography>
           <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
-            {[
-              {
-                period: '2018 - 2022',
-                title: 'Ingeniería en Sistemas Computacionales',
-                institution: 'Universidad Tecnológica',
-                description: 'Licenciatura en Ingeniería con especialización en desarrollo de software y sistemas.',
-                type: 'Licenciatura'
-              },
-              {
-                period: '2022 - 2023',
-                title: 'Certificación en Cloud Computing',
-                institution: 'AWS Academy',
-                description: 'Certificación profesional en servicios de nube y arquitecturas distribuidas.',
-                type: 'Certificación'
-              },
-              {
-                period: '2023',
-                title: 'Full Stack Web Development',
-                institution: 'FreeCodeCamp',
-                description: 'Bootcamp intensivo de desarrollo web full stack con tecnologías modernas.',
-                type: 'Bootcamp'
-              },
-              {
-                period: '2021',
-                title: 'Curso de React Avanzado',
-                institution: 'Platzi',
-                description: 'Especialización en React.js, hooks, context API y mejores prácticas.',
-                type: 'Curso'
-              }
-            ].map((formation, index) => (
+            {profile.education.map((formation, index) => (
               <Grid item xs={12} sm={6} md={6} key={index}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 2, maxWidth: 500 }}>
                   <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600, mb: 1 }}>
                     {formation.period}
                   </Typography>
-                  <Chip 
-                    label={formation.type} 
-                    size="small" 
-                    variant="filled" 
-                    color="primary" 
+                  <Chip
+                    label={formation.type}
+                    size="small"
+                    variant="filled"
+                    color="primary"
                     sx={{ alignSelf: 'flex-start', mb: 1 }}
                   />
                   <Typography variant="h6" component="h3" gutterBottom color="primary.main" sx={{ fontWeight: 600 }}>
@@ -237,10 +271,10 @@ const AboutMe = () => {
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
-              {['HTML', 'CSS', 'JavaScript', 'React', 'Sass', 'Git', 'GitHub'].map((skill) => (
-                <Chip 
+              {profile.skills.map((skill) => (
+                <Chip
                   key={skill}
-                  label={skill} 
+                  label={skill}
                   variant="outlined"
                   color="primary"
                   sx={{ mb: 1 }}
@@ -255,16 +289,11 @@ const AboutMe = () => {
         {/* Projects Section */}
         <Paper elevation={1} sx={{ p: 3, mb: 3, bgcolor: 'background.paper', textAlign: 'center' }}>
           <Typography variant="h4" component="h2" gutterBottom color="text.primary">
-            Proyectos
+            Projects
           </Typography>
           <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
-            {[
-              { title: 'Título del Proyecto', desc: 'Descripción breve del proyecto' },
-              { title: 'Título del Proyecto', desc: 'Descripción breve del proyecto' },
-              { title: 'Proyectos', desc: 'Descripción breve del proyecto' },
-              { title: 'Proyectos', desc: 'Descripción breve del proyecto' }
-            ].map((project, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
+            {profile.projects.map((project, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <CardMedia
                     component="div"
@@ -282,13 +311,44 @@ const AboutMe = () => {
                   >
                     <Typography variant="h4" color="primary.main">🖼️</Typography>
                   </CardMedia>
-                  <CardContent sx={{ flexGrow: 1, p: 2 }}>
-                    <Typography gutterBottom variant="h6" component="h3">
-                      {project.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                  <CardContent sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                      <Typography gutterBottom variant="h6" component="h3" sx={{ flexGrow: 1 }}>
+                        {project.title}
+                      </Typography>
+                      {project.isPrivate && (
+                        <Chip
+                          label="Private"
+                          size="small"
+                          color="warning"
+                          variant="outlined"
+                          sx={{ ml: 1 }}
+                        />
+                      )}
+                    </Box>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1 }}>
                       {project.desc}
                     </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 'auto' }}>
+                      <IconButton
+                        color="primary"
+                        aria-label="View PDF"
+                        onClick={() => window.open(project.pdfLink, '_blank')}
+                        size="small"
+                      >
+                        <PictureAsPdf />
+                      </IconButton>
+                      {project.githubLink && !project.isPrivate && (
+                        <IconButton
+                          color="primary"
+                          aria-label="View on GitHub"
+                          onClick={() => window.open(project.githubLink, '_blank')}
+                          size="small"
+                        >
+                          <GitHub />
+                        </IconButton>
+                      )}
+                    </Box>
                   </CardContent>
                 </Card>
               </Grid>
@@ -299,49 +359,58 @@ const AboutMe = () => {
         {/* Contact Section */}
         <Paper id="contact-section" elevation={1} sx={{ p: 3, bgcolor: 'background.paper', textAlign: 'center' }}>
           <Typography variant="h4" component="h2" gutterBottom color="text.primary">
-            Contacto
+            Contact
           </Typography>
           <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
-            <Grid item xs={12} md={6}>
-              <Paper elevation={2} sx={{ p: 2, bgcolor: 'grey.50' }}>
-                <TextField
-                  fullWidth
-                  label="Nombre"
-                  variant="outlined"
-                  disabled
-                  sx={{ mb: 2 }}
-                />
-                <TextField
-                  fullWidth
-                  label="Email"
-                  variant="outlined"
-                  disabled
-                />
-              </Paper>
-            </Grid>
+            {
+              /* Contact Form Section 
+              <Grid item xs={12} md={6}>
+                <Paper elevation={2} sx={{ p: 2, bgcolor: 'grey.50' }}>
+                  <TextField
+                    fullWidth
+                    label="Name"
+                    variant="outlined"
+                    disabled
+                    sx={{ mb: 2 }}
+                  />
+                  <TextField
+                    fullWidth
+                    label="Email"
+                    variant="outlined"
+                    disabled
+                  />
+                </Paper>
+              </Grid>
+              */
+            }
             <Grid item xs={12} md={6}>
               <Box sx={{ mb: 3 }}>
                 <Typography variant="h6" gutterBottom>
-                  Enviar correo
+                  Send Email
                 </Typography>
                 <Typography variant="body1" color="primary" sx={{ mb: 2 }}>
                   <Email sx={{ mr: 1, verticalAlign: 'middle' }} />
-                  .....@example.com
+                  {profile.contact.email}
                 </Typography>
               </Box>
               <Box>
                 <Typography variant="h6" gutterBottom>
-                  Sígueme en redes
+                  Follow Me
                 </Typography>
                 <Stack direction="row" spacing={1} sx={{ justifyContent: 'center' }}>
-                  <IconButton color="primary" aria-label="GitHub">
+                  <IconButton
+                    color="primary"
+                    aria-label="GitHub"
+                    onClick={() => window.open(profile.contact.social.github, '_blank')}
+                  >
                     <GitHub />
                   </IconButton>
-                  <IconButton color="primary" aria-label="LinkedIn">
+                  <IconButton
+                    color="primary"
+                    aria-label="LinkedIn"
+                    onClick={() => window.open(profile.contact.social.linkedin, '_blank')}
+                  >
                     <LinkedIn />
-                  </IconButton>
-                  <IconButton color="primary" aria-label="Twitter">
-                    <Twitter />
                   </IconButton>
                 </Stack>
               </Box>
