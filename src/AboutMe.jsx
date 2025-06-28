@@ -49,7 +49,7 @@ const profile = {
     {
       period: 'May 2022 - August 2022',
       title: 'Backend Developer',
-      institution: 'Digital Agency Co.',
+      institution: 'BranchBit S.A. de C.V.',
       description: 'Development and maintenance of RESTful API services, deploying in development, QA, and production environments on GCP Cloud.',
       type: 'Mid-Level'
     },
