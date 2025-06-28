@@ -112,6 +112,7 @@ const profile = {
   ],
   contact: {
     email: 'cesar_munozocampo@hotmail.com',
+    cvPdf: ' /cmo-porfolio/pdfs/cesar-munoz-portfolio.pdf',
     social: {
       github: 'https://github.com/cesarmunozocampoxD',
       linkedin: 'https://www.linkedin.com/in/developer-cesar-munoz-ocampo/'
@@ -153,24 +154,44 @@ const AboutMe = () => {
           <Typography variant="h5" gutterBottom sx={{ fontWeight: 300, mb: 4 }}>
             {profile.personalInfo.title}
           </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            onClick={() => {
-              const contactSection = document.getElementById('contact-section');
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            sx={{
-              bgcolor: 'rgba(0,0,0,0.3)',
-              '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
-              textTransform: 'none',
-              px: 4
-            }}
-          >
-            Contact Me
-          </Button>
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => {
+                const contactSection = document.getElementById('contact-section');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              sx={{
+                bgcolor: 'rgba(0,0,0,0.3)',
+                '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
+                textTransform: 'none',
+                px: 4
+              }}
+            >
+              Contact Me
+            </Button>
+            <Button
+              variant="outlined"
+              size="large"
+              startIcon={<PictureAsPdf />}
+              onClick={() => window.open(profile.contact.cvPdf, '_blank')}
+              sx={{
+                borderColor: 'rgba(255,255,255,0.5)',
+                color: 'primary.contrastText',
+                '&:hover': { 
+                  borderColor: 'rgba(255,255,255,0.8)',
+                  bgcolor: 'rgba(255,255,255,0.1)'
+                },
+                textTransform: 'none',
+                px: 4
+              }}
+            >
+              Download CV
+            </Button>
+          </Box>
         </Container>
       </Paper>
 
