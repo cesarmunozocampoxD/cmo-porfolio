@@ -15,7 +15,8 @@ import {
   TextField,
   IconButton,
   Stack,
-  Divider
+  Divider,
+  Badge
 } from '@mui/material';
 import {
   GitHub,
@@ -26,6 +27,7 @@ import {
   Launch
 } from '@mui/icons-material';
 import profilePhoto from './assets/img/photo.jpg';
+import ViewCounter from './components/ViewCounter';
 
 // Profile data object containing all dynamic content
 const profile = {
@@ -125,6 +127,13 @@ const profile = {
 const AboutMe = () => {
   return (
     <Box>
+      {/* Viewer Count Badge */}
+      <ViewCounter 
+        variant="badge" 
+        position="fixed" 
+        showIcon={true} 
+      />
+
       {/* Header Section with Purple Background */}
       <Paper
         elevation={0}
