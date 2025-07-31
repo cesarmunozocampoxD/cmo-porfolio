@@ -88,6 +88,7 @@ const profile = {
     'Agile Methodologies', 'Redis', 'Checkmarx', 'SonarQube'
   ],
   projects: [
+    /*
     {
       title: 'GMTLaboratory',
       desc: 'Web application where technologies such as React, Java SpringBoot and AWS were used',
@@ -102,6 +103,7 @@ const profile = {
       githubLink: 'https://github.com/cesarmunozocampoxD/age.gg',
       isPrivate: false
     },
+    */
     {
       title: 'Portfolio Website',
       desc: 'Personal portfolio website with responsive design using React and GitHub Pages',
