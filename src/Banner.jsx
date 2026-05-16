@@ -138,7 +138,7 @@ const Banner = ({ mode, onToggleMode }) => {
             <IconButton
               onClick={onToggleMode}
               color="inherit"
-              aria-label="toggle colour mode"
+              aria-label="toggle color mode"
               sx={{ color: isDark ? 'rgba(255,255,255,0.85)' : 'text.primary' }}
             >
               {isDark ? <Brightness7Icon /> : <Brightness4Icon />}

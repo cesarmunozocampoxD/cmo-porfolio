@@ -6,10 +6,11 @@ const profile = {
     title: 'Senior Fullstack Developer',
     tagline:
       'Building scalable web apps & cloud solutions — available for consulting & mentoring.',
-    aboutMe: `I am a Senior Fullstack Developer with solid experience in designing and developing web applications and microservices. I specialize in creating scalable 
-    and efficient solutions, both frontend and backend, working in cloud environments and with modern development methodologies.
-    I stand out for my proactive approach, problem-solving ability and ease of integrating into multidisciplinary teams.
-    My professional goal is to continue growing towards roles focused on software architecture, contributing technical and strategic vision to projects.`,
+    aboutMe:
+      'I am a Senior Fullstack Developer with solid experience in designing and developing web applications and microservices. ' +
+      'I specialize in creating scalable and efficient solutions, both frontend and backend, working in cloud environments and with modern development methodologies. ' +
+      'I stand out for my proactive approach, problem-solving ability and ease of integrating into multidisciplinary teams. ' +
+      'My professional goal is to continue growing towards roles focused on software architecture, contributing technical and strategic vision to projects.',
     photo: profilePhoto,
     stats: [
       { label: 'Years Experience', value: '7+' },
