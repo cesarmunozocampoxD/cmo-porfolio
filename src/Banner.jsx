@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -11,7 +12,6 @@ import {
   Box,
   Button,
   useScrollTrigger,
-  Slide,
   Tooltip,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -19,48 +19,19 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const menuItems = [
-  { text: 'About', href: '#about' },
-  { text: 'Services', href: '#services' },
-  { text: 'Courses', href: '#courses' },
-  { text: 'Projects', href: '#projects' },
-  { text: 'Contact', href: '#contact' },
+  { text: 'About', path: '/' },
+  { text: 'Services', path: '/services' },
+  { text: 'Courses', path: '/courses' },
+  { text: 'Projects', path: '/projects' },
+  { text: 'Contact', path: '/contact' },
 ];
-
-const scrollToSection = (href) => {
-  const id = href.replace('#', '');
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-};
 
 const Banner = ({ mode, onToggleMode }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 10 });
-
-  useEffect(() => {
-    const sectionIds = menuItems.map((item) => item.href.replace('#', ''));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-    );
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const toggleDrawer = (open) => () => setDrawerOpen(open);
 
@@ -97,7 +68,7 @@ const Banner = ({ mode, onToggleMode }) => {
               cursor: 'pointer',
               userSelect: 'none',
             }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => navigate('/')}
           >
             CMO
           </Typography>
@@ -105,12 +76,11 @@ const Banner = ({ mode, onToggleMode }) => {
           {/* Desktop nav links */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: 0.5 }}>
             {menuItems.map((item) => {
-              const sectionId = item.href.replace('#', '');
-              const isActive = activeSection === sectionId;
+              const isActive = location.pathname === item.path;
               return (
                 <Button
                   key={item.text}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => navigate(item.path)}
                   sx={{
                     color: isActive
                       ? 'primary.main'
@@ -190,13 +160,12 @@ const Banner = ({ mode, onToggleMode }) => {
           </Box>
           <List sx={{ pt: 1 }}>
             {menuItems.map((item) => {
-              const sectionId = item.href.replace('#', '');
-              const isActive = activeSection === sectionId;
+              const isActive = location.pathname === item.path;
               return (
                 <ListItem
                   button
                   key={item.text}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => navigate(item.path)}
                   sx={{
                     mx: 1,
                     my: 0.5,

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import {
   Box,
   Container,
@@ -6,66 +6,91 @@ import {
   Grid,
   Card,
   CardContent,
-  IconButton,
+  Button,
   Stack,
   Chip,
+  Tooltip,
 } from '@mui/material';
 import { GitHub, PictureAsPdf, Launch } from '@mui/icons-material';
 import profile from './data/profile';
 
+const GRAD = 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)';
+
+const thumbGrads = [
+  'linear-gradient(135deg, #1e3a8a 0%, #4f46e5 100%)',
+  'linear-gradient(135deg, #064e3b 0%, #1d4ed8 100%)',
+  'linear-gradient(135deg, #4c1d95 0%, #0891b2 100%)',
+  'linear-gradient(135deg, #7c2d12 0%, #be185d 100%)',
+  'linear-gradient(135deg, #1e3a5f 0%, #312e81 100%)',
+];
+
 const Projects = () => {
   return (
-    <Box
-      component="section"
-      id="projects"
-      sx={{ py: 8, bgcolor: 'background.default', scrollMarginTop: 64 }}
-    >
+    <Box component="section" sx={{ py: { xs: 10, md: 14 }, bgcolor: 'background.default' }}>
       <Container maxWidth="lg">
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          color="text.primary"
-          textAlign="center"
-          sx={{ fontWeight: 700, mb: 1 }}
-        >
-          Projects
-        </Typography>
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          textAlign="center"
-          sx={{ mb: 5, maxWidth: 580, mx: 'auto' }}
-        >
-          A selection of personal and professional projects showcasing my technical range.
-        </Typography>
+        {/* Section header */}
+        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+          <Typography
+            variant="overline"
+            sx={{ color: 'primary.main', fontWeight: 700, letterSpacing: 3, display: 'block', mb: 1 }}
+          >
+            My Work
+          </Typography>
+          <Typography
+            variant="h3"
+            component="h2"
+            sx={{
+              fontWeight: 800,
+              mb: 2,
+              background: GRAD,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              display: 'inline-block',
+            }}
+          >
+            Projects
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 560, mx: 'auto', lineHeight: 1.8 }}>
+            A selection of personal and professional projects showcasing my technical range.
+          </Typography>
+        </Box>
 
         <Grid container spacing={3} justifyContent="center">
           {profile.projects.map((project, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
-                elevation={2}
+                elevation={0}
                 sx={{
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  overflow: 'hidden',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: 6,
+                    transform: 'translateY(-6px)',
+                    boxShadow: '0 20px 50px rgba(37,99,235,0.14)',
                   },
                 }}
               >
-                {/* Styled thumbnail banner */}
+                {/* Thumbnail banner */}
                 <Box
                   sx={{
-                    height: 100,
-                    background: 'linear-gradient(135deg, #1976D2 0%, #9c27b0 100%)',
+                    height: 110,
+                    background: thumbGrads[index % thumbGrads.length],
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    px: 2,
+                    px: 3,
                     position: 'relative',
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: 0,
+                      background:
+                        'radial-gradient(ellipse at 75% 30%, rgba(255,255,255,0.12) 0%, transparent 55%)',
+                    },
                   }}
                 >
                   <Typography
@@ -74,7 +99,9 @@ const Projects = () => {
                       color: '#fff',
                       fontWeight: 700,
                       textAlign: 'center',
-                      textShadow: '0 1px 4px rgba(0,0,0,0.4)',
+                      textShadow: '0 2px 6px rgba(0,0,0,0.3)',
+                      position: 'relative',
+                      zIndex: 1,
                     }}
                   >
                     {project.title}
@@ -84,18 +111,21 @@ const Projects = () => {
                       label="Private"
                       size="small"
                       color="warning"
-                      sx={{ position: 'absolute', top: 8, right: 8 }}
+                      sx={{ position: 'absolute', top: 10, right: 10, fontWeight: 600 }}
                     />
                   )}
                 </Box>
 
-                <CardContent sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1, lineHeight: 1.7 }}>
+                <CardContent sx={{ flexGrow: 1, p: 2.5, display: 'flex', flexDirection: 'column' }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 2, flexGrow: 1, lineHeight: 1.8 }}
+                  >
                     {project.desc}
                   </Typography>
 
-                  {/* Tech stack chips */}
-                  <Stack direction="row" flexWrap="wrap" gap={0.6} sx={{ mb: 2 }}>
+                  <Stack direction="row" flexWrap="wrap" gap={0.6} sx={{ mb: 2.5 }}>
                     {project.techStack.map((tech) => (
                       <Chip
                         key={tech}
@@ -103,42 +133,49 @@ const Projects = () => {
                         size="small"
                         variant="outlined"
                         color="primary"
+                        sx={{ fontWeight: 500 }}
                       />
                     ))}
                   </Stack>
 
                   {/* Action buttons */}
-                  <Stack direction="row" spacing={0.5} justifyContent="center">
-                    <IconButton
-                      color="primary"
-                      aria-label="View PDF documentation"
-                      onClick={() => window.open(project.pdfLink, '_blank')}
-                      size="small"
-                      title="View PDF"
-                    >
-                      <PictureAsPdf />
-                    </IconButton>
-                    {project.githubLink && !project.isPrivate && (
-                      <IconButton
-                        color="primary"
-                        aria-label="View source on GitHub"
-                        onClick={() => window.open(project.githubLink, '_blank')}
+                  <Stack direction="row" spacing={1} justifyContent="center">
+                    <Tooltip title="View PDF">
+                      <Button
+                        variant="outlined"
                         size="small"
-                        title="GitHub"
+                        startIcon={<PictureAsPdf />}
+                        onClick={() => window.open(project.pdfLink, '_blank')}
+                        sx={{ flex: 1, py: 0.8 }}
                       >
-                        <GitHub />
-                      </IconButton>
+                        Docs
+                      </Button>
+                    </Tooltip>
+                    {project.githubLink && !project.isPrivate && (
+                      <Tooltip title="GitHub">
+                        <Button
+                          variant="outlined"
+                          size="small"
+                          startIcon={<GitHub />}
+                          onClick={() => window.open(project.githubLink, '_blank')}
+                          sx={{ flex: 1, py: 0.8 }}
+                        >
+                          Code
+                        </Button>
+                      </Tooltip>
                     )}
                     {project.demoLink && (
-                      <IconButton
-                        color="primary"
-                        aria-label="View live demo"
-                        onClick={() => window.open(project.demoLink, '_blank')}
-                        size="small"
-                        title="Live Demo"
-                      >
-                        <Launch />
-                      </IconButton>
+                      <Tooltip title="Live Demo">
+                        <Button
+                          variant="contained"
+                          size="small"
+                          startIcon={<Launch />}
+                          onClick={() => window.open(project.demoLink, '_blank')}
+                          sx={{ flex: 1, py: 0.8 }}
+                        >
+                          Demo
+                        </Button>
+                      </Tooltip>
                     )}
                   </Stack>
                 </CardContent>

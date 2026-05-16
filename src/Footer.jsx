@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -14,48 +15,49 @@ import { GitHub, LinkedIn, Email, KeyboardArrowUp } from '@mui/icons-material';
 import profile from './data/profile';
 
 const navLinks = [
-  { text: 'About', href: '#about' },
-  { text: 'Services', href: '#services' },
-  { text: 'Courses', href: '#courses' },
-  { text: 'Projects', href: '#projects' },
-  { text: 'Contact', href: '#contact' },
+  { text: 'About',    path: '/' },
+  { text: 'Services', path: '/services' },
+  { text: 'Courses',  path: '/courses' },
+  { text: 'Projects', path: '/projects' },
+  { text: 'Contact',  path: '/contact' },
 ];
-
-const scrollToSection = (href) => {
-  const id = href.replace('#', '');
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const navigate = useNavigate();
 
   return (
     <Box
       component="footer"
       sx={{
-        bgcolor: 'primary.main',
-        color: 'primary.contrastText',
-        pt: 6,
+        background: 'linear-gradient(135deg, #0f0c29 0%, #1e1b4b 40%, #1e3a8a 100%)',
+        color: '#fff',
+        pt: 7,
         pb: 3,
-        mt: 0,
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={4} sx={{ mb: 4 }}>
+        <Grid container spacing={4} sx={{ mb: 5 }}>
           {/* Brand column */}
           <Grid item xs={12} md={4}>
             <Typography
               variant="h5"
+              onClick={() => navigate('/')}
               sx={{
                 fontWeight: 800,
                 letterSpacing: 1,
                 mb: 1,
+                cursor: 'pointer',
+                background: 'linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                display: 'inline-block',
               }}
             >
               CMO
             </Typography>
-            <Typography variant="body2" sx={{ opacity: 0.8, mb: 2, lineHeight: 1.7 }}>
+            <Typography variant="body2" sx={{ opacity: 0.65, mb: 2.5, lineHeight: 1.8 }}>
               Senior Fullstack Developer · Consultant · Mentor<br />
               Building scalable solutions since 2018.
             </Typography>
@@ -65,9 +67,13 @@ const Footer = () => {
                   aria-label="GitHub"
                   size="small"
                   onClick={() => window.open(profile.contact.social.github, '_blank')}
-                  sx={{ color: 'primary.contrastText', opacity: 0.85, '&:hover': { opacity: 1 } }}
+                  sx={{
+                    color: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.1)',
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
+                  }}
                 >
-                  <GitHub />
+                  <GitHub fontSize="small" />
                 </IconButton>
               </Tooltip>
               <Tooltip title="LinkedIn">
@@ -75,9 +81,13 @@ const Footer = () => {
                   aria-label="LinkedIn"
                   size="small"
                   onClick={() => window.open(profile.contact.social.linkedin, '_blank')}
-                  sx={{ color: 'primary.contrastText', opacity: 0.85, '&:hover': { opacity: 1 } }}
+                  sx={{
+                    color: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.1)',
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
+                  }}
                 >
-                  <LinkedIn />
+                  <LinkedIn fontSize="small" />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Email">
@@ -86,9 +96,13 @@ const Footer = () => {
                   size="small"
                   component="a"
                   href={`mailto:${profile.contact.email}`}
-                  sx={{ color: 'primary.contrastText', opacity: 0.85, '&:hover': { opacity: 1 } }}
+                  sx={{
+                    color: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.1)',
+                    '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
+                  }}
                 >
-                  <Email />
+                  <Email fontSize="small" />
                 </IconButton>
               </Tooltip>
             </Stack>
@@ -96,20 +110,25 @@ const Footer = () => {
 
           {/* Quick nav column */}
           <Grid item xs={12} md={4}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 2, letterSpacing: 0.5 }}>
+            <Typography
+              variant="subtitle2"
+              sx={{ fontWeight: 700, mb: 2, letterSpacing: 1, opacity: 0.5, textTransform: 'uppercase', fontSize: '0.7rem' }}
+            >
               Quick Links
             </Typography>
-            <Stack spacing={1}>
+            <Stack spacing={1.2}>
               {navLinks.map((link) => (
                 <Typography
                   key={link.text}
                   variant="body2"
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => navigate(link.path)}
                   sx={{
-                    opacity: 0.8,
+                    opacity: 0.7,
                     cursor: 'pointer',
                     width: 'fit-content',
-                    '&:hover': { opacity: 1, textDecoration: 'underline' },
+                    fontWeight: 500,
+                    transition: 'opacity 0.2s, transform 0.2s',
+                    '&:hover': { opacity: 1, transform: 'translateX(4px)' },
                   }}
                 >
                   {link.text}
@@ -120,20 +139,23 @@ const Footer = () => {
 
           {/* CTA column */}
           <Grid item xs={12} md={4}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 2, letterSpacing: 0.5 }}>
+            <Typography
+              variant="subtitle2"
+              sx={{ fontWeight: 700, mb: 2, letterSpacing: 1, opacity: 0.5, textTransform: 'uppercase', fontSize: '0.7rem' }}
+            >
               Hire Me
             </Typography>
-            <Typography variant="body2" sx={{ opacity: 0.8, mb: 2, lineHeight: 1.7 }}>
+            <Typography variant="body2" sx={{ opacity: 0.65, mb: 2.5, lineHeight: 1.8 }}>
               Available for consulting, freelance projects, and full-time roles.
             </Typography>
             <Button
               variant="outlined"
               size="small"
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => navigate('/contact')}
               sx={{
-                borderColor: 'rgba(255,255,255,0.5)',
-                color: 'primary.contrastText',
-                textTransform: 'none',
+                borderColor: 'rgba(255,255,255,0.35)',
+                color: '#fff',
+                fontWeight: 600,
                 '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' },
               }}
             >
@@ -142,22 +164,30 @@ const Footer = () => {
           </Grid>
         </Grid>
 
-        <Divider sx={{ borderColor: 'rgba(255,255,255,0.15)', mb: 3 }} />
+        <Divider sx={{ borderColor: 'rgba(255,255,255,0.1)', mb: 3 }} />
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
-          <Typography variant="body2" sx={{ opacity: 0.7 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: 1,
+          }}
+        >
+          <Typography variant="body2" sx={{ opacity: 0.5, fontSize: '0.8rem' }}>
             © {year} Cesar Muñoz Ocampo. All rights reserved.
           </Typography>
           <Tooltip title="Back to top">
             <IconButton
               aria-label="Back to top"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              sx={{
-                color: 'primary.contrastText',
-                bgcolor: 'rgba(255,255,255,0.15)',
-                '&:hover': { bgcolor: 'rgba(255,255,255,0.25)' },
-              }}
               size="small"
+              sx={{
+                color: '#fff',
+                bgcolor: 'rgba(255,255,255,0.12)',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.22)' },
+              }}
             >
               <KeyboardArrowUp />
             </IconButton>
