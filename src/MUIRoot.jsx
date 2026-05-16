@@ -2,23 +2,24 @@
 import React from 'react';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#1976D2',
-      light: '#1E88E5',
-      dark: '#6b5b95',
+const getTheme = (mode) =>
+  createTheme({
+    palette: {
+      mode,
+      primary: {
+        main: '#1976D2',
+        light: '#1E88E5',
+        dark: '#6b5b95',
+      },
+      background: {
+        default: mode === 'dark' ? '#121212' : '#ffffff',
+        paper: mode === 'dark' ? '#1e1e1e' : '#ffffff',
+      },
     },
-    background: {
-      default: '#ffffff',
-      paper: '#ffffff',
-    },
-  },
-});
+  });
 
-const MUIRoot = ({ children }) => (
-  <ThemeProvider theme={theme}>
+const MUIRoot = ({ children, mode = 'light' }) => (
+  <ThemeProvider theme={getTheme(mode)}>
     <CssBaseline />
     {children}
   </ThemeProvider>
