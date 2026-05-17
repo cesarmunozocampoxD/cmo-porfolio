@@ -1,0 +1,41 @@
+.vc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.vc--fixed {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+.vc--badge {
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  background: transparent;
+}
+
+.vc--card {
+  color: inherit;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+}
+
+.vc--minimal {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+}
+
+.vc-text {
+  font-weight: 600 !important;
+}
+
+.vc-skeleton {
+  background-color: rgba(255,255,255,0.1) !important;
+}

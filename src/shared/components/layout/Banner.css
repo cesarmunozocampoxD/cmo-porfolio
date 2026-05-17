@@ -1,0 +1,128 @@
+/* -- AppBar -- */
+.banner-appbar {
+  backdrop-filter: blur(10px) !important;
+  transition: background 0.3s, border-color 0.3s !important;
+}
+
+.banner-appbar--light {
+  background: rgba(255,255,255,0.85) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  color: #1e293b !important;
+}
+.banner-appbar--light.banner-appbar--scrolled {
+  background: rgba(255,255,255,0.97) !important;
+  border-bottom: none !important;
+}
+
+.banner-appbar--dark {
+  background: rgba(18,18,18,0.85) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+}
+.banner-appbar--dark.banner-appbar--scrolled {
+  background: rgba(18,18,18,0.97) !important;
+  border-bottom: none !important;
+}
+
+/* -- Logo -- */
+.banner-logo {
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  margin-right: 32px !important;
+  background: linear-gradient(135deg, #1976D2 0%, #9c27b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* -- Desktop nav -- */
+.banner-nav {
+  flex-grow: 1;
+  display: none;
+  gap: 4px;
+}
+@media (min-width: 900px) {
+  .banner-nav { display: flex; }
+}
+
+.banner-nav-btn {
+  text-transform: none !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  padding-bottom: 2px !important;
+  color: inherit !important;
+  transition: color var(--transition-fast) !important;
+}
+.banner-nav-btn:hover {
+  color: var(--color-primary) !important;
+  background: transparent !important;
+}
+.banner-nav-btn--active {
+  color: var(--color-primary) !important;
+  font-weight: 700 !important;
+  border-bottom-color: var(--color-primary) !important;
+}
+
+/* -- Spacer -- */
+.banner-spacer {
+  flex-grow: 1;
+}
+@media (min-width: 900px) {
+  .banner-spacer { flex-grow: 0; }
+}
+
+/* -- Icon buttons (theme toggle + hamburger) -- */
+.banner-icon-btn--light { color: #1e293b !important; }
+.banner-icon-btn--dark  { color: rgba(255,255,255,0.85) !important; }
+
+.banner-hamburger {
+  display: flex !important;
+}
+@media (min-width: 900px) {
+  .banner-hamburger { display: none !important; }
+}
+
+/* -- Drawer -- */
+.banner-drawer {
+  width: 260px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.banner-drawer-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.banner-drawer-logo {
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #1976D2 0%, #9c27b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.banner-drawer-item {
+  margin: 4px 8px !important;
+  border-radius: 8px !important;
+}
+.banner-drawer-item--active {
+  background-color: var(--color-primary) !important;
+  color: #fff !important;
+}
+.banner-drawer-item-text {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.banner-drawer-item-text--active {
+  font-weight: 700;
+}
+
+/* -- Drawer scrollbar hide -- */
+.MuiDrawer-paper {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.MuiDrawer-paper::-webkit-scrollbar { display: none; }

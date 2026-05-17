@@ -1,0 +1,68 @@
+/* -----------------------------------------
+   Design Tokens — CSS Custom Properties
+   ----------------------------------------- */
+
+:root {
+  /* Colors */
+  --color-primary:        #2563EB;
+  --color-primary-light:  #60A5FA;
+  --color-primary-dark:   #1D4ED8;
+  --color-secondary:      #7C3AED;
+  --color-secondary-light:#A78BFA;
+  --color-secondary-dark: #5B21B6;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  --gradient-hero:  linear-gradient(135deg, #0f0c29, #302b63, #1e3a8a, #0f172a);
+
+  /* Backgrounds — light mode defaults */
+  --bg-default:    #F8FAFC;
+  --bg-paper:      #FFFFFF;
+  --bg-dark:       #0F172A;
+  --bg-dark-paper: #1E293B;
+
+  /* Borders */
+  --border-subtle: rgba(0,0,0,0.06);
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-extrabold:800;
+
+  /* Spacing scale (multiples of 4) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Border radius */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-full:9999px;
+
+  /* Shadows */
+  --shadow-glow-primary:   0 0 20px rgba(37,99,235,0.3);
+  --shadow-glow-secondary: 0 0 20px rgba(124,58,237,0.3);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
+
+  /* Transitions */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow:   0.4s ease;
+}
+
+/* Dark mode override — applied when <html class="dark"> */
+.dark {
+  --bg-default:    #0F172A;
+  --bg-paper:      #1E293B;
+  --border-subtle: rgba(255,255,255,0.06);
+}

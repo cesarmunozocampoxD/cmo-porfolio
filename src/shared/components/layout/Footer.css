@@ -1,0 +1,100 @@
+.footer-root {
+  background: linear-gradient(135deg, #0f0c29 0%, #1e1b4b 40%, #1e3a8a 100%);
+  color: #fff;
+  padding-top: 56px;
+  padding-bottom: 24px;
+}
+
+.footer-grid {
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 8px !important;
+  cursor: pointer;
+  background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block !important;
+}
+
+.footer-tagline {
+  opacity: 0.65;
+  margin-bottom: 20px !important;
+  line-height: 1.8 !important;
+}
+
+.footer-social-btn {
+  color: #fff !important;
+  background: rgba(255,255,255,0.1) !important;
+  transition: background var(--transition-fast) !important;
+}
+.footer-social-btn:hover {
+  background: rgba(255,255,255,0.2) !important;
+}
+
+.footer-col-heading {
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+  letter-spacing: 1px !important;
+  opacity: 0.5;
+  text-transform: uppercase;
+  font-size: 0.7rem !important;
+}
+
+.footer-nav-link {
+  opacity: 0.7;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 500 !important;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.footer-nav-link:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.footer-cta-text {
+  opacity: 0.65;
+  margin-bottom: 20px !important;
+  line-height: 1.8 !important;
+}
+
+.footer-cta-btn {
+  border-color: rgba(255,255,255,0.35) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+}
+.footer-cta-btn:hover {
+  border-color: #fff !important;
+  background: rgba(255,255,255,0.1) !important;
+}
+
+.footer-divider {
+  border-color: rgba(255,255,255,0.1) !important;
+  margin-bottom: 24px !important;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-copyright {
+  opacity: 0.5;
+  font-size: 0.8rem !important;
+}
+
+.footer-back-top {
+  color: #fff !important;
+  background: rgba(255,255,255,0.12) !important;
+}
+.footer-back-top:hover {
+  background: rgba(255,255,255,0.22) !important;
+}
