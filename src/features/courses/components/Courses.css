@@ -1,0 +1,109 @@
+.courses-root {
+  padding: 80px 0;
+  background-color: var(--bg-paper);
+}
+@media (min-width: 900px) {
+  .courses-root { padding: 112px 0; }
+}
+
+.courses-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+@media (min-width: 900px) {
+  .courses-header { margin-bottom: 64px; }
+}
+
+.courses-overline {
+  color: var(--color-primary) !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+}
+
+.courses-title {
+  font-weight: 800 !important;
+  margin-bottom: 16px !important;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block !important;
+}
+
+.courses-subtitle {
+  max-width: 560px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  line-height: 1.8 !important;
+}
+
+/* -- Card -- */
+.courses-card {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal) !important;
+}
+.courses-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(37,99,235,0.14) !important;
+}
+
+/* -- Banner -- */
+.courses-banner {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  position: relative;
+  overflow: hidden;
+}
+.courses-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.courses-banner--0 { background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%); }
+.courses-banner--1 { background: linear-gradient(135deg, #064e3b 0%, #0891b2 100%); }
+.courses-banner--2 { background: linear-gradient(135deg, #4c1d95 0%, #be185d 100%); }
+.courses-banner--3 { background: linear-gradient(135deg, #78350f 0%, #b45309 100%); }
+
+.courses-banner-title {
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.courses-card-content {
+  flex-grow: 1;
+  padding: 24px !important;
+}
+
+.courses-chip-row { margin-bottom: 16px; }
+
+.courses-level-chip  { font-weight: 600 !important; }
+.courses-status-badge { font-weight: 600 !important; }
+
+.courses-desc {
+  margin-bottom: 16px !important;
+  line-height: 1.8 !important;
+}
+
+.courses-duration { margin-bottom: 16px; }
+.courses-duration-text { font-weight: 600 !important; }
+.courses-topic-chip { font-weight: 500 !important; }
+
+.courses-card-action { padding: 0 24px 24px; }
+
+.courses-cta-btn {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
