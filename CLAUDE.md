@@ -36,17 +36,15 @@ No TypeScript, no test runner (yet), no typecheck step.
 
 - Non-trivial work is specified before it is coded. The spec is the **source of truth**: its
   acceptance criteria are the contract your PR must meet, and its "Approach & tasks" section guides
-  implementation. A deeper `plan.md` + `tasks.md` appear only when a heavy issue was escalated with
-  the `plan` label, and then they supersede the spec's light approach.
-- **Specs are NOT in this repo.** They live in
-  [`cesarmunozocampoxD/specs`](https://github.com/cesarmunozocampoxD/specs) at
-  `specs/cmo-porfolio/<issue#>-<slug>/spec.md`. This repo carries only a pointer per issue,
-  `.specs/<issue#>.ref`, which records the exact spec commit the code was written against.
-- To read the spec for issue #N: open `.specs/N.ref` and follow its `path` into the specs repo. In
-  CI the specs repo is checked out read-only at `.specs-repo/`. **Never edit anything under
-  `.specs-repo/`** — it is a different repository; if the spec is wrong, say so in the PR instead.
-- When implementing, read the spec first; when reviewing, check the PR against it. Small, obvious
-  changes may skip the spec. See [`.specs/README.md`](.specs/README.md).
+  implementation. A deeper **plan** comment appears only when a heavy issue was escalated with the
+  `plan` label, and then it supersedes the spec's light approach.
+- **The spec is a comment on the issue** (ADR-0002): `specify` posts a canonical comment marked
+  `<!-- agent-spec:<n> -->`. Editing that comment approves/corrects intent; adding `claude-implement`
+  is the go-ahead. This repo carries only a pointer per issue, `.specs/<issue#>.ref`, which records
+  the **content hash** of the exact spec comment the code was written against.
+- To read the spec for issue #N: open the issue's `<!-- agent-spec:N -->` comment. When implementing,
+  read it first; when reviewing, check the PR against it. Small, obvious changes may skip the spec
+  (label the issue `no-spec`). See [`.specs/README.md`](.specs/README.md).
 
 ## Branch flow
 
