@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import AboutMe from '../features/about/components/AboutMe.jsx';
@@ -24,13 +24,36 @@ function Layout({ mode, onToggleMode }) {
   );
 }
 
+const THEME_STORAGE_KEY = 'theme-mode';
+
+const getInitialMode = () => {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (stored === 'light' || stored === 'dark') return stored;
+  } catch {
+    // localStorage unavailable (e.g. strict private browsing)
+  }
+  if (typeof window !== 'undefined' && window.matchMedia) {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  return 'light';
+};
+
 function App() {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState(getInitialMode);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+  }, [mode]);
 
   const toggleMode = () => {
     setMode((prev) => {
       const next = prev === 'light' ? 'dark' : 'light';
-      document.documentElement.classList.toggle('dark', next === 'dark');
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+      } catch {
+        // localStorage unavailable; theme still updates for this session
+      }
       return next;
     });
   };
