@@ -7,7 +7,13 @@
 # SINCE v0.5.0 the specs live in a dedicated specs repo (ADR-0001). This is a PERSONAL-account repo,
 # and an App installation token can't span accounts — so its specs repo is `cesarmunozocampoxD/specs`
 # (same account), NOT DMCSoftMX/specs. Every phase that touches specs passes it via `specs_repo`.
-# `secrets: inherit` forwards LOOP_APP_ID / LOOP_APP_PRIVATE_KEY; run preflight once and it'll check.
+#
+# CROSS-ACCOUNT SECRETS: the engine lives in the DMCSoftMX org, this repo in a personal account.
+# `secrets: inherit` does NOT cross the account/org boundary — the reusable workflow receives EMPTY
+# secrets and every App-token phase dies at "LOOP_APP_ID / LOOP_APP_PRIVATE_KEY are not set". So we
+# pass each secret EXPLICITLY (the ${{ secrets.* }} is evaluated in THIS repo's context and the value
+# is handed to the engine). Pass a job only the secrets its workflow_call declares — an undeclared
+# secret is a startup error. pr-gate and ci declare none, so they get no secrets block.
 name: Agent loop
 
 on:
@@ -44,28 +50,40 @@ jobs:
     uses: DMCSoftMX/agent-loop/.github/workflows/preflight.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   specify:
     if: github.event_name == 'issues' && github.event.label.name == 'specify'
     uses: DMCSoftMX/agent-loop/.github/workflows/specify.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   plan:
     if: github.event_name == 'issues' && github.event.label.name == 'plan'
     uses: DMCSoftMX/agent-loop/.github/workflows/plan.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   implement:
     if: github.event_name == 'issues' && github.event.label.name == 'claude-implement'
     uses: DMCSoftMX/agent-loop/.github/workflows/implement.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   claude:
     if: |
@@ -76,28 +94,34 @@ jobs:
     uses: DMCSoftMX/agent-loop/.github/workflows/claude.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   review:
     if: github.event_name == 'pull_request'
     uses: DMCSoftMX/agent-loop/.github/workflows/review.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   pr-gate:
     if: github.event_name == 'pull_request'
     uses: DMCSoftMX/agent-loop/.github/workflows/pr-gate.yml@v0.5.4
-    secrets: inherit
 
   spec-guard:
     if: github.event_name == 'pull_request'
     uses: DMCSoftMX/agent-loop/.github/workflows/spec-guard.yml@v0.5.4
     with:
       specs_repo: cesarmunozocampoxD/specs
-    secrets: inherit
+    secrets:
+      LOOP_APP_ID: ${{ secrets.LOOP_APP_ID }}
+      LOOP_APP_PRIVATE_KEY: ${{ secrets.LOOP_APP_PRIVATE_KEY }}
 
   ci:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     uses: DMCSoftMX/agent-loop/.github/workflows/ci.yml@v0.5.4
-    secrets: inherit
