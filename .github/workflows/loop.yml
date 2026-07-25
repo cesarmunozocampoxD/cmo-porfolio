@@ -1,0 +1,103 @@
+# .github/workflows/loop.yml  — the only workflow this repo needs.
+#
+# THIN STUB: routes every event to the central engine. All logic lives in DMCSoftMX/agent-loop;
+# here you only pin the version (@vX). Renovate (.github/renovate.json) bumps that pin for you.
+# Per-repo data stays local: CLAUDE.md, setup.env, and the .specs/<issue#>.ref pins.
+#
+# SINCE v0.5.0 the specs live in a dedicated specs repo (ADR-0001). This is a PERSONAL-account repo,
+# and an App installation token can't span accounts — so its specs repo is `cesarmunozocampoxD/specs`
+# (same account), NOT DMCSoftMX/specs. Every phase that touches specs passes it via `specs_repo`.
+# `secrets: inherit` forwards LOOP_APP_ID / LOOP_APP_PRIVATE_KEY; run preflight once and it'll check.
+name: Agent loop
+
+on:
+  workflow_dispatch:        # run the one-shot `preflight` job to validate setup
+  issues:
+    types: [labeled, opened, assigned]
+  issue_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+  pull_request_review_comment:
+    types: [created]
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [develop, main]
+
+# The engine's reusable jobs declare the token scopes they need (contents/PR/issues write, plus
+# id-token for OIDC). A called reusable workflow can NEVER exceed the caller's grant, so the stub
+# must set the ceiling here. Without this, every write phase dies at startup ("startup_failure")
+# because a repo's default GITHUB_TOKEN is read-only.
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  # Run ONCE per repo after setup (Actions -> "Agent loop" -> Run workflow) to
+  # validate secret/token/App/config before the first real phase. Never fires
+  # on normal events.
+  preflight:
+    if: github.event_name == 'workflow_dispatch'
+    uses: DMCSoftMX/agent-loop/.github/workflows/preflight.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  specify:
+    if: github.event_name == 'issues' && github.event.label.name == 'specify'
+    uses: DMCSoftMX/agent-loop/.github/workflows/specify.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  plan:
+    if: github.event_name == 'issues' && github.event.label.name == 'plan'
+    uses: DMCSoftMX/agent-loop/.github/workflows/plan.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  implement:
+    if: github.event_name == 'issues' && github.event.label.name == 'claude-implement'
+    uses: DMCSoftMX/agent-loop/.github/workflows/implement.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  claude:
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+    uses: DMCSoftMX/agent-loop/.github/workflows/claude.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  review:
+    if: github.event_name == 'pull_request'
+    uses: DMCSoftMX/agent-loop/.github/workflows/review.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  pr-gate:
+    if: github.event_name == 'pull_request'
+    uses: DMCSoftMX/agent-loop/.github/workflows/pr-gate.yml@v0.5.4
+    secrets: inherit
+
+  spec-guard:
+    if: github.event_name == 'pull_request'
+    uses: DMCSoftMX/agent-loop/.github/workflows/spec-guard.yml@v0.5.4
+    with:
+      specs_repo: cesarmunozocampoxD/specs
+    secrets: inherit
+
+  ci:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    uses: DMCSoftMX/agent-loop/.github/workflows/ci.yml@v0.5.4
+    secrets: inherit
