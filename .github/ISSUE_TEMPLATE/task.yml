@@ -1,0 +1,47 @@
+name: "Task for the agent"
+description: "Well-defined task for the agent to implement and open a PR"
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the task with enough context for the agent to implement it without guessing.
+        **It does not trigger on creation:** when it's ready, add the `claude-implement` label
+        (one click, visible in the list) or comment `@claude implement this`.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What need/problem exists and why.
+      placeholder: "Today X happens; it should be Y because..."
+    validations:
+      required: true
+  - type: textarea
+    id: what-to-do
+    attributes:
+      label: What to do
+      description: Concrete expected changes. Reference files/areas if you know them.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How we'll know it's done. Specific and verifiable.
+      value: |
+        - [ ] ...
+        - [ ] CI green (lint · typecheck · test · build)
+        - [ ] Follows the conventions in CLAUDE.md
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "🔴 Critical"
+        - "🟠 Important"
+        - "🟡 Nice to have"
+    validations:
+      required: false
