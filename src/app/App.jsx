@@ -9,6 +9,7 @@ import Courses from '../features/courses/components/Courses.jsx';
 import Projects from '../features/projects/components/Projects.jsx';
 import Contact from '../features/contact/components/Contact.jsx';
 import Footer from '../shared/components/layout/Footer.jsx';
+import ScrollToTopButton from '../shared/components/ui/ScrollToTopButton.jsx';
 import './App.css';
 
 function Layout({ mode, onToggleMode }) {
@@ -18,6 +19,7 @@ function Layout({ mode, onToggleMode }) {
       <Banner mode={mode} onToggleMode={onToggleMode} />
       <Outlet />
       <Footer />
+      <ScrollToTopButton />
     </MUIRoot>
   );
 }
