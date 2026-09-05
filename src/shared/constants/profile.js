@@ -18,32 +18,60 @@ const profile = {
       { label: 'Technologies', value: '22+' },
     ],
   },
-  experience: [
-    {
-      period: 'September 2022 - Present',
-      title: 'Backend Developer',
-      institution: 'COPPEL S.A. de C.V.',
-      description:
-        'Development of RESTful API microservices deployed in development, QA, and production environments on GCP Cloud and collaboration in agile teams.',
-      type: 'Senior',
-    },
-    {
-      period: 'May 2022 - August 2022',
-      title: 'Backend Developer',
-      institution: 'BranchBit S.A. de C.V.',
-      description:
-        'Development and maintenance of RESTful API services, deploying in development, QA, and production environments on GCP Cloud.',
-      type: 'Mid-Level',
-    },
-    {
-      period: 'March 2018 - May 2022',
-      title: 'Junior Developer',
-      institution: 'Full Stack Web Developer',
-      description:
-        'Development of web applications using technologies such as HTML, CSS, JavaScript and PHP. Participation in agile development projects and collaboration with multidisciplinary teams.',
-      type: 'Junior',
-    },
-  ],
+  careerJourney: {
+    intro:
+      'Every role has been a deliberate step rather than a separate job — one continuous ' +
+      'trajectory from writing my first web page to architecting cloud-native microservices.',
+    stages: [
+      {
+        period: 'March 2018 – May 2022',
+        role: 'Junior Developer',
+        organization: 'Early full-stack web projects',
+        headline: 'Learning to build, end to end',
+        narrative:
+          'My career began building complete web applications from the ground up with HTML, ' +
+          'CSS, JavaScript and PHP, inside agile teams where I owned a feature from database to ' +
+          'browser. That full-stack exposure taught me how the pieces of a system fit together — ' +
+          'a perspective that still shapes how I design backend services today.',
+        skills: ['HTML', 'CSS', 'JavaScript', 'Git', 'Agile Methodologies'],
+        connector:
+          'As those projects matured, my curiosity shifted from what people see to what makes ' +
+          'it run: the APIs, the data, the infrastructure underneath.',
+      },
+      {
+        period: 'May 2022 – August 2022',
+        role: 'Backend Developer',
+        organization: 'BranchBit S.A. de C.V.',
+        headline: 'Specializing in services, not just screens',
+        narrative:
+          'At BranchBit I moved from building interfaces to building what powers them — ' +
+          'designing and maintaining RESTful APIs and shipping them through development, QA and ' +
+          'production on GCP. It was a short but pivotal chapter: the first time I owned a ' +
+          'service\'s full lifecycle in the cloud, not just its code.',
+        skills: ['Java', 'Spring Boot', 'GCP', 'MySQL', 'PostgreSQL', 'Docker'],
+        connector:
+          'That first taste of cloud-native backend work set the direction for what came next: ' +
+          'doing it at a larger scale, with more ownership.',
+      },
+      {
+        period: 'September 2022 – Present',
+        role: 'Backend Developer',
+        organization: 'COPPEL S.A. de C.V.',
+        headline: 'Owning microservices at scale',
+        narrative:
+          'At COPPEL I design and develop RESTful API microservices deployed across development, ' +
+          'QA and production on GCP, collaborating inside agile teams on systems serving a large ' +
+          'user base. The scope grew from writing endpoints to reasoning about architecture, ' +
+          'reliability and how services interact — the natural next step from everything before it.',
+        skills: ['Java', 'Spring Boot', 'Kubernetes', 'GCP', 'Redis', 'SonarQube', 'Checkmarx'],
+        connector: null,
+      },
+    ],
+    throughLine:
+      'The arc is consistent: from full-stack generalist, to backend specialist, to someone who ' +
+      'thinks in systems. The next chapter is software architecture — turning that experience ' +
+      'into technical and strategic vision for the products I help build.',
+  },
   education: [
     {
       period: '2015 - 2021',

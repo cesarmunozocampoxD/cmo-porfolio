@@ -18,12 +18,17 @@ import {
   Email,
   PictureAsPdf,
   SchoolOutlined,
-  WorkOutline,
+  CodeOutlined,
+  CloudQueueOutlined,
+  AccountTreeOutlined,
+  TrendingUpOutlined,
 } from '@mui/icons-material';
 import profile from '../../../shared/constants/profile';
 import ViewCounter from '../../../shared/components/ui/ViewCounter';
 
 const typeKey = (t) => t.toLowerCase().replace(/[^a-z]/g, '');
+
+const STAGE_ICONS = [CodeOutlined, CloudQueueOutlined, AccountTreeOutlined];
 
 const AboutMe = () => {
   const navigate = useNavigate();
@@ -131,68 +136,80 @@ const AboutMe = () => {
 
       <Divider />
 
-      {/* -- Experience -- */}
+      {/* -- Career Journey -- */}
       <div className="about-dark-section">
         <Container maxWidth="lg" className="about-section">
           <div className="section-header">
-            <Typography variant="h4" component="h2" className="section-title">Experience</Typography>
+            <Typography variant="h4" component="h2" className="section-title">Career Journey</Typography>
             <Typography variant="body1" color="text.secondary" className="section-subtitle">
-              My professional journey and career milestones
+              {profile.careerJourney.intro}
             </Typography>
           </div>
 
-          <div className="about-timeline">
-            {profile.experience.map((exp, index) => {
-              const isRight = index % 2 !== 0;
-              const key = typeKey(exp.type);
+          <div className="journey-path">
+            {profile.careerJourney.stages.map((stage, index) => {
+              const Icon = STAGE_ICONS[index] || CodeOutlined;
+              const isLast = index === profile.careerJourney.stages.length - 1;
               return (
-                <Grid
-                  container
-                  key={index}
-                  className="about-timeline-item"
-                  justifyContent={isRight ? 'flex-end' : 'flex-start'}
-                >
-                  <div className="about-timeline-dot" />
-                  <Grid
-                    item xs={12} md={5}
-                    className={[
-                      'about-timeline-col',
-                      isRight ? 'about-timeline-col--right' : 'about-timeline-col--left',
-                    ].join(' ')}
-                  >
-                    <Card elevation={0} className={`about-exp-card about-exp-card--${key}`}>
+                <React.Fragment key={stage.period}>
+                  <div className="journey-stage">
+                    <div className="journey-marker">
+                      <div className="journey-marker-icon">
+                        <Icon fontSize="small" />
+                      </div>
+                      {!isLast && <div className="journey-marker-line" />}
+                    </div>
+                    <Card elevation={0} className="journey-card">
                       <Stack
-                        direction="row"
-                        alignItems="center"
+                        direction={{ xs: 'column', sm: 'row' }}
                         justifyContent="space-between"
-                        className="about-exp-meta"
+                        alignItems={{ xs: 'flex-start', sm: 'center' }}
+                        spacing={0.5}
+                        className="journey-meta"
                       >
-                        <Typography variant="caption" color="text.secondary" className="about-exp-period">
-                          {exp.period}
+                        <Typography variant="overline" className="journey-role">
+                          {stage.role}
                         </Typography>
-                        <Chip
-                          label={exp.type}
-                          size="small"
-                          className={`about-type-chip about-type-chip--${key}`}
-                        />
-                      </Stack>
-                      <Stack direction="row" alignItems="center" spacing={1} className="about-exp-title-row">
-                        <WorkOutline className="about-exp-icon" />
-                        <Typography variant="h6" color="primary" className="about-exp-title">
-                          {exp.title}
+                        <Typography variant="caption" color="text.secondary" className="journey-org">
+                          {stage.organization} · {stage.period}
                         </Typography>
                       </Stack>
-                      <Typography variant="body2" color="text.secondary" className="about-exp-company">
-                        {exp.institution}
+                      <Typography variant="h6" className="journey-headline">
+                        {stage.headline}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary" className="about-exp-desc">
-                        {exp.description}
+                      <Typography variant="body2" color="text.secondary" className="journey-narrative">
+                        {stage.narrative}
                       </Typography>
+                      <Stack direction="row" spacing={1} flexWrap="wrap" className="journey-skills">
+                        {stage.skills.map((skill) => (
+                          <Chip
+                            key={skill}
+                            label={skill}
+                            size="small"
+                            variant="outlined"
+                            className="journey-skill-chip"
+                          />
+                        ))}
+                      </Stack>
                     </Card>
-                  </Grid>
-                </Grid>
+                  </div>
+                  {stage.connector && (
+                    <div className="journey-connector">
+                      <Typography variant="body2" className="journey-connector-text">
+                        {stage.connector}
+                      </Typography>
+                    </div>
+                  )}
+                </React.Fragment>
               );
             })}
+          </div>
+
+          <div className="journey-throughline">
+            <TrendingUpOutlined className="journey-throughline-icon" />
+            <Typography variant="body1" className="journey-throughline-text">
+              {profile.careerJourney.throughLine}
+            </Typography>
           </div>
         </Container>
       </div>
