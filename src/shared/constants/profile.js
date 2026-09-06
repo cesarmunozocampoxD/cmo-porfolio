@@ -19,124 +19,51 @@ const profile = {
     ],
   },
   careerJourney: {
-    headline:
-      'Seven years moving in one direction: from building whole websites on my own ' +
-      'to designing the services that run behind them.',
-    summary:
-      'Four chapters so far, plus the one I am writing now. Open any of them to see what ' +
-      'changed, what I built, and where it led next.',
-    chapters: [
+    lead:
+      'I started out building whole websites on my own. ' +
+      '**Today I design the services that run behind them.**',
+    story: [
+      'I studied Computer Systems Engineering at TESE, but what really taught me the trade ' +
+        'were the projects nobody assigned me: small web apps where I wrote the markup, the ' +
+        'styles, the queries and the deployment myself. Between 2015 and 2018 software stopped ' +
+        'being a set of files and became **a system I could reason about**, where data is ' +
+        'modeled, a request travels, and a decision taken in the first week shows up six ' +
+        'months later.',
+      'For the four years that followed I built complete web applications with JavaScript and ' +
+        'PHP, owning features from the database schema all the way to the interface, inside ' +
+        'agile teams working next to design, QA and stakeholders. **Shipping turned out to be ' +
+        'a team sport**, and that changed how I write code. It also made something obvious: ' +
+        'the problems that held my attention were never on the screen. They were behind it, in ' +
+        'the data model that did not fit, the integration that broke at the worst hour, the ' +
+        'query that got slower every month.',
+      'In 2022 I moved to where those problems live. At BranchBit I designed and maintained ' +
+        'RESTful services in Java and Spring Boot and carried them through development, QA and ' +
+        'production on Google Cloud: **the first time I owned the entire life of a service, ' +
+        'not just its code**. I pushed in the same direction on my own time, with an AWS cloud ' +
+        'certification and side projects like the aoe.gg API, running Spring Boot on AWS, ' +
+        'where every architectural decision was mine to make and mine to live with.',
+      'Since September 2022 I have been at COPPEL, building and running microservices for a ' +
+        'large retail organization: containerized on Kubernetes, cached with Redis, and gated ' +
+        'by SonarQube and Checkmarx before anything reaches production. The question I get ' +
+        'asked has changed shape. It used to be whether the endpoint works; now it is ' +
+        '**what happens to everything around it when this service does not**. That is ' +
+        'architecture work, and it is where I want to keep going: bringing technical and ' +
+        'strategic vision to the systems I help build, and passing on what I have learned ' +
+        'through mentoring and consulting.',
+    ],
+    growth: [
       {
-        id: 'foundations',
-        years: '2015 - 2018',
-        title: 'Foundations',
-        shift: 'From studying systems to building them',
-        role: 'Computer Systems Engineering',
-        organization: 'TESE',
-        narrative:
-          'It started at engineering school, where software stopped being a set of files and ' +
-          'became a system: how data is modeled, how a request travels, why a decision taken ' +
-          'early shows up months later. I spent those years turning coursework into web ' +
-          'projects that actually ran, and got hooked on the moment an idea becomes something ' +
-          'someone else can open in a browser.',
-        highlights: [
-          'Computer Systems Engineering, specialized in software and systems development',
-          'First web projects built end to end, from the database to the browser',
-          'The fundamentals I still lean on: data modeling, HTTP, and version control',
-        ],
-        stack: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'Git'],
+        label: 'Scope',
+        steps: ['a page', 'a feature', 'a service', 'a system'],
       },
       {
-        id: 'fullstack',
-        years: '2018 - 2022',
-        title: 'Full-stack years',
-        shift: 'From writing code to shipping products',
-        role: 'Full Stack Web Developer',
-        organization: null,
-        narrative:
-          'For four years I built complete web applications with JavaScript and PHP, owning ' +
-          'features from the database schema all the way to the interface. Working inside ' +
-          'agile, multidisciplinary teams taught me that shipping is a team sport: estimates, ' +
-          'reviews, and handoffs matter as much as the code. It also made something obvious. ' +
-          'The problems I enjoyed most were never on the screen, they were in the data, the ' +
-          'integrations, and the performance behind it.',
-        highlights: [
-          'Web applications delivered end to end: schema, backend, and interface',
-          'Agile delivery alongside design, QA, and stakeholders',
-          'Discovered where I wanted to go deeper: the layer behind the UI',
+        label: 'Stack',
+        steps: [
+          'HTML / CSS / PHP',
+          'JavaScript / MySQL',
+          'Java / Spring Boot / GCP',
+          'Kubernetes / Redis',
         ],
-        stack: ['JavaScript', 'PHP', 'HTML', 'CSS', 'Sass', 'MySQL', 'Git', 'Agile Methodologies'],
-      },
-      {
-        id: 'backend',
-        years: '2022',
-        title: 'Into the cloud',
-        shift: 'From generalist to backend engineer',
-        role: 'Backend Developer',
-        organization: 'BranchBit S.A. de C.V.',
-        narrative:
-          'At BranchBit I committed to the side of the stack I kept gravitating to. I designed ' +
-          'and maintained RESTful services in Java and Spring Boot, and carried them through ' +
-          'development, QA, and production on Google Cloud: the first time I owned the whole ' +
-          'life of a service and not only its code. I doubled down outside work too, with an ' +
-          'AWS cloud certification and side projects like the aoe.gg API, built with Spring ' +
-          'Boot and deployed on AWS.',
-        highlights: [
-          'RESTful APIs designed, built, and maintained in production',
-          'Release path owned across development, QA, and production on GCP',
-          'AWS Academy cloud certification and personal Spring Boot projects on AWS',
-        ],
-        stack: ['Java', 'Spring Boot', 'GCP', 'AWS', 'PostgreSQL', 'Docker'],
-      },
-      {
-        id: 'scale',
-        years: '2022 - Present',
-        title: 'Systems at scale',
-        shift: 'From single services to systems that have to hold',
-        role: 'Backend Developer',
-        organization: 'COPPEL S.A. de C.V.',
-        narrative:
-          'At COPPEL I build and run RESTful microservices inside a large retail organization: ' +
-          'containerized on Kubernetes, cached with Redis, and gated by SonarQube and Checkmarx ' +
-          'before anything reaches production. The day to day moved from writing endpoints to ' +
-          'choosing boundaries, contracts, and failure modes, and then answering for them once ' +
-          'the service is live. That is where the architecture questions started to feel like ' +
-          'my questions.',
-        highlights: [
-          'Microservices designed, deployed, and operated across dev, QA, and production',
-          'Kubernetes, Redis, and GCP as everyday tools rather than line items',
-          'Quality and security gates built into the definition of done',
-        ],
-        stack: [
-          'Java',
-          'Spring Boot',
-          'Kubernetes',
-          'Docker',
-          'GCP',
-          'Redis',
-          'SonarQube',
-          'Checkmarx',
-        ],
-      },
-      {
-        id: 'next',
-        years: 'Next',
-        title: 'Architecture',
-        shift: 'From building systems to designing them',
-        role: null,
-        organization: null,
-        future: true,
-        narrative:
-          'Every chapter widened the same lens: from a file, to a feature, to a service, to a ' +
-          'system. The next one is software architecture, bringing technical and strategic ' +
-          'vision to the products I work on, and passing on what I have learned through ' +
-          'mentoring and consulting.',
-        highlights: [
-          'Going deeper into distributed systems and cloud architecture',
-          'Mentoring and consulting next to hands-on engineering',
-          'Looking for problems where the architecture decides the outcome',
-        ],
-        stack: ['Software Architecture', 'Distributed Systems', 'Cloud Design', 'Mentoring'],
       },
     ],
   },
