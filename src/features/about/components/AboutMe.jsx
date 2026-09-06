@@ -18,10 +18,10 @@ import {
   Email,
   PictureAsPdf,
   SchoolOutlined,
-  WorkOutline,
 } from '@mui/icons-material';
 import profile from '../../../shared/constants/profile';
 import ViewCounter from '../../../shared/components/ui/ViewCounter';
+import CareerJourney from './CareerJourney';
 
 const typeKey = (t) => t.toLowerCase().replace(/[^a-z]/g, '');
 
@@ -131,71 +131,8 @@ const AboutMe = () => {
 
       <Divider />
 
-      {/* -- Experience -- */}
-      <div className="about-dark-section">
-        <Container maxWidth="lg" className="about-section">
-          <div className="section-header">
-            <Typography variant="h4" component="h2" className="section-title">Experience</Typography>
-            <Typography variant="body1" color="text.secondary" className="section-subtitle">
-              My professional journey and career milestones
-            </Typography>
-          </div>
-
-          <div className="about-timeline">
-            {profile.experience.map((exp, index) => {
-              const isRight = index % 2 !== 0;
-              const key = typeKey(exp.type);
-              return (
-                <Grid
-                  container
-                  key={index}
-                  className="about-timeline-item"
-                  justifyContent={isRight ? 'flex-end' : 'flex-start'}
-                >
-                  <div className="about-timeline-dot" />
-                  <Grid
-                    item xs={12} md={5}
-                    className={[
-                      'about-timeline-col',
-                      isRight ? 'about-timeline-col--right' : 'about-timeline-col--left',
-                    ].join(' ')}
-                  >
-                    <Card elevation={0} className={`about-exp-card about-exp-card--${key}`}>
-                      <Stack
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="space-between"
-                        className="about-exp-meta"
-                      >
-                        <Typography variant="caption" color="text.secondary" className="about-exp-period">
-                          {exp.period}
-                        </Typography>
-                        <Chip
-                          label={exp.type}
-                          size="small"
-                          className={`about-type-chip about-type-chip--${key}`}
-                        />
-                      </Stack>
-                      <Stack direction="row" alignItems="center" spacing={1} className="about-exp-title-row">
-                        <WorkOutline className="about-exp-icon" />
-                        <Typography variant="h6" color="primary" className="about-exp-title">
-                          {exp.title}
-                        </Typography>
-                      </Stack>
-                      <Typography variant="body2" color="text.secondary" className="about-exp-company">
-                        {exp.institution}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" className="about-exp-desc">
-                        {exp.description}
-                      </Typography>
-                    </Card>
-                  </Grid>
-                </Grid>
-              );
-            })}
-          </div>
-        </Container>
-      </div>
+      {/* -- Career Journey -- */}
+      <CareerJourney />
 
       <Divider />
 
