@@ -19,51 +19,75 @@ const profile = {
     ],
   },
   careerJourney: {
-    lead:
-      'I started out building whole websites on my own. ' +
+    thesis:
+      'I started out building whole websites alone. ' +
       '**Today I design the services that run behind them.**',
-    story: [
-      'I studied Computer Systems Engineering at TESE, but what really taught me the trade ' +
-        'were the projects nobody assigned me: small web apps where I wrote the markup, the ' +
-        'styles, the queries and the deployment myself. Between 2015 and 2018 software stopped ' +
-        'being a set of files and became **a system I could reason about**, where data is ' +
-        'modeled, a request travels, and a decision taken in the first week shows up six ' +
-        'months later.',
-      'For the four years that followed I built complete web applications with JavaScript and ' +
-        'PHP, owning features from the database schema all the way to the interface, inside ' +
-        'agile teams working next to design, QA and stakeholders. **Shipping turned out to be ' +
-        'a team sport**, and that changed how I write code. It also made something obvious: ' +
-        'the problems that held my attention were never on the screen. They were behind it, in ' +
-        'the data model that did not fit, the integration that broke at the worst hour, the ' +
-        'query that got slower every month.',
-      'In 2022 I moved to where those problems live. At BranchBit I designed and maintained ' +
-        'RESTful services in Java and Spring Boot and carried them through development, QA and ' +
-        'production on Google Cloud: **the first time I owned the entire life of a service, ' +
-        'not just its code**. I pushed in the same direction on my own time, with an AWS cloud ' +
-        'certification and side projects like the aoe.gg API, running Spring Boot on AWS, ' +
-        'where every architectural decision was mine to make and mine to live with.',
-      'Since September 2022 I have been at COPPEL, building and running microservices for a ' +
-        'large retail organization: containerized on Kubernetes, cached with Redis, and gated ' +
-        'by SonarQube and Checkmarx before anything reaches production. The question I get ' +
-        'asked has changed shape. It used to be whether the endpoint works; now it is ' +
-        '**what happens to everything around it when this service does not**. That is ' +
-        'architecture work, and it is where I want to keep going: bringing technical and ' +
-        'strategic vision to the systems I help build, and passing on what I have learned ' +
-        'through mentoring and consulting.',
-    ],
-    growth: [
+    axis: {
+      from: 2015,
+      to: 2026.7,
+      ticks: [
+        { label: '2015', at: 2015 },
+        { label: '2018', at: 2018 },
+        { label: '2022', at: 2022 },
+      ],
+    },
+    spans: [
       {
-        label: 'Scope',
-        steps: ['a page', 'a feature', 'a service', 'a system'],
+        scope: 'a page',
+        from: 2015,
+        to: 2018.2,
+        period: '2015 - 2018',
+        duration: '3y',
+        detail: 'first web projects, built end to end while studying engineering',
+        org: '@tese',
+        state: 'done',
+        tone: 'seed',
       },
       {
-        label: 'Stack',
-        steps: [
-          'HTML / CSS / PHP',
-          'JavaScript / MySQL',
-          'Java / Spring Boot / GCP',
-          'Kubernetes / Redis',
-        ],
+        scope: 'a feature',
+        from: 2018.2,
+        to: 2022.4,
+        period: '2018 - 2022',
+        duration: '4y 2mo',
+        detail: 'javascript and php products, shipped with agile teams',
+        org: null,
+        state: 'done',
+        tone: 'early',
+      },
+      {
+        scope: 'a service',
+        from: 2022.4,
+        to: 2022.7,
+        period: '2022',
+        duration: '4mo',
+        detail:
+          'rest apis in java, taken to production on gcp. ' +
+          '**the shortest span, and the one that changed direction**',
+        org: '@branchbit',
+        state: 'done',
+        tone: 'mid',
+      },
+      {
+        scope: 'a system',
+        from: 2022.7,
+        to: null,
+        period: '2022 - now',
+        duration: '4y',
+        detail: 'microservices on kubernetes, redis and gcp for a nationwide retailer',
+        org: '@coppel',
+        state: 'running',
+        tone: 'now',
+      },
+      {
+        scope: 'architecture',
+        from: null,
+        to: null,
+        period: null,
+        duration: 'next',
+        detail: 'designing the systems, not only the services inside them',
+        org: null,
+        state: 'next',
+        tone: 'next',
       },
     ],
   },
