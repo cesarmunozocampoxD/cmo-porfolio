@@ -19,10 +19,10 @@ const Projects = () => {
     <section className="projects-root">
       <Container maxWidth="lg">
         <div className="projects-header">
-          <Typography variant="overline" className="projects-overline">My Work</Typography>
-          <Typography variant="h3" component="h2" className="projects-title">Projects</Typography>
+          <Typography variant="overline" className="projects-overline">Mi trabajo</Typography>
+          <Typography variant="h3" component="h2" className="projects-title">Proyectos</Typography>
           <Typography variant="body1" color="text.secondary" className="projects-subtitle">
-            A selection of personal and professional projects showcasing my technical range.
+            Una selección de proyectos personales y profesionales que reflejan mi experiencia técnica.
           </Typography>
         </div>
 
@@ -36,7 +36,7 @@ const Projects = () => {
                   </Typography>
                   {project.isPrivate && (
                     <Chip
-                      label="Private"
+                      label="Privado"
                       size="small"
                       color="warning"
                       className="projects-private-badge"
@@ -63,7 +63,7 @@ const Projects = () => {
                   </Stack>
 
                   <Stack direction="row" spacing={1} justifyContent="center">
-                    <Tooltip title="View PDF">
+                    <Tooltip title="Ver PDF">
                       <Button
                         variant="outlined"
                         size="small"
@@ -71,7 +71,7 @@ const Projects = () => {
                         className="projects-action-btn"
                         onClick={() => window.open(project.pdfLink, '_blank')}
                       >
-                        Docs
+                        Documentación
                       </Button>
                     </Tooltip>
                     {project.githubLink && !project.isPrivate && (
@@ -83,12 +83,12 @@ const Projects = () => {
                           className="projects-action-btn"
                           onClick={() => window.open(project.githubLink, '_blank')}
                         >
-                          Code
+                          Código
                         </Button>
                       </Tooltip>
                     )}
                     {project.demoLink && (
-                      <Tooltip title="Live Demo">
+                      <Tooltip title="Demo en vivo">
                         <Button
                           variant="contained"
                           size="small"

@@ -9,7 +9,7 @@ import {
   IconButton,
   Tooltip,
 } from '@mui/material';
-import { GitHub, LinkedIn, Email } from '@mui/icons-material';
+import { GitHub, LinkedIn } from '@mui/icons-material';
 import ContactForm from './ContactForm';
 import profile from '../../../shared/constants/profile';
 
@@ -18,11 +18,11 @@ const Contact = () => {
     <section className="contact-root">
       <Container maxWidth="lg">
         <div className="contact-header">
-          <Typography variant="overline" className="contact-overline">Let&apos;s Talk</Typography>
-          <Typography variant="h3" component="h2" className="contact-title">Get In Touch</Typography>
+          <Typography variant="overline" className="contact-overline">Hablemos</Typography>
+          <Typography variant="h3" component="h2" className="contact-title">Ponte en contacto</Typography>
           <Typography variant="body1" color="text.secondary" className="contact-subtitle">
-            Whether you have a project in mind, want to enroll in a course, or just want to say
-            hello &mdash; I&apos;d love to hear from you.
+            Si tienes un proyecto en mente, quieres inscribirte en un curso o simplemente deseas
+            saludar, me encantará saber de ti.
           </Typography>
         </div>
 
@@ -32,31 +32,15 @@ const Contact = () => {
             <div className="contact-info-panel">
               <div className="contact-info-body">
                 <div>
-                  <Typography variant="h5" className="contact-info-heading">Contact Info</Typography>
+                  <Typography variant="h5" className="contact-info-heading">Información de contacto</Typography>
                   <Typography variant="body2" className="contact-info-sub">
-                    I&apos;m open to consulting, freelance, and full-time roles. Response within 1&ndash;2 business days.
+                    Estoy disponible para consultoría, proyectos independientes y puestos de tiempo
+                    completo. Respondo en uno o dos días hábiles.
                   </Typography>
                 </div>
 
-                <Stack direction="row" spacing={1.5} alignItems="center">
-                  <div className="contact-icon-box">
-                    <Email className="contact-icon" />
-                  </div>
-                  <div>
-                    <Typography variant="caption" className="contact-label">Email</Typography>
-                    <Typography
-                      variant="body2"
-                      component="a"
-                      href={`mailto:${profile.contact.email}`}
-                      className="contact-email-link"
-                    >
-                      {profile.contact.email}
-                    </Typography>
-                  </div>
-                </Stack>
-
                 <div>
-                  <Typography variant="caption" className="contact-label">Find me online</Typography>
+                  <Typography variant="caption" className="contact-label">Encuéntrame en línea</Typography>
                   <Stack direction="row" spacing={1} className="contact-socials">
                     <Tooltip title="GitHub">
                       <IconButton
@@ -85,9 +69,9 @@ const Contact = () => {
           {/* Form panel */}
           <Grid item xs={12} md={8}>
             <Paper elevation={0} className="contact-form-panel">
-              <Typography variant="h6" className="contact-form-heading">Send a Message</Typography>
+              <Typography variant="h6" className="contact-form-heading">Enviar un mensaje</Typography>
               <Typography variant="body2" color="text.secondary" className="contact-form-sub">
-                Fill in the form below and I&apos;ll get back to you as soon as possible.
+                Completa el formulario y me pondré en contacto contigo lo antes posible.
               </Typography>
               <ContactForm />
             </Paper>

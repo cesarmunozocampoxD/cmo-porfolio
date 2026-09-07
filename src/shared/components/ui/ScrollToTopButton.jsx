@@ -13,7 +13,7 @@ const ScrollToTopButton = () => {
         className="scroll-to-top"
         color="primary"
         size="medium"
-        aria-label="scroll back to top"
+        aria-label="Volver al inicio"
         onClick={scrollToTop}
       >
         <KeyboardArrowUp />

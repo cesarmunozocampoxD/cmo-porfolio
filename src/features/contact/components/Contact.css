@@ -80,33 +80,11 @@
   line-height: 1.7 !important;
 }
 
-.contact-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact-icon { font-size: 20px !important; }
-
 .contact-label {
   opacity: 0.6;
   display: block;
   margin-bottom: 2px;
 }
-
-.contact-email-link {
-  color: #fff !important;
-  text-decoration: none !important;
-  font-weight: 500 !important;
-  word-break: break-word;
-  transition: opacity var(--transition-fast);
-}
-.contact-email-link:hover { opacity: 0.85; }
 
 .contact-socials { margin-top: 8px; }
 

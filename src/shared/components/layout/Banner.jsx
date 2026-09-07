@@ -19,11 +19,11 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const menuItems = [
-  { text: 'About',    path: '/' },
-  { text: 'Services', path: '/services' },
-  { text: 'Courses',  path: '/courses' },
-  { text: 'Projects', path: '/projects' },
-  { text: 'Contact',  path: '/contact' },
+  { text: 'Biografía', path: '/' },
+  { text: 'Servicios', path: '/services' },
+  { text: 'Cursos', path: '/courses' },
+  { text: 'Proyectos', path: '/projects' },
+  { text: 'Contacto', path: '/contact' },
 ];
 
 const Banner = ({ mode, onToggleMode }) => {
@@ -73,11 +73,11 @@ const Banner = ({ mode, onToggleMode }) => {
 
           <div className="banner-spacer" />
 
-          <Tooltip title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
+          <Tooltip title={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
             <IconButton
               onClick={onToggleMode}
               color="inherit"
-              aria-label="toggle color mode"
+              aria-label="Cambiar modo de color"
               className={iconBtnCls}
             >
               {isDark ? <Brightness7Icon /> : <Brightness4Icon />}
@@ -87,7 +87,7 @@ const Banner = ({ mode, onToggleMode }) => {
           <IconButton
             edge="end"
             color="inherit"
-            aria-label="open navigation menu"
+            aria-label="Abrir menú de navegación"
             onClick={toggleDrawer(true)}
             className={['banner-hamburger', iconBtnCls].join(' ')}
           >

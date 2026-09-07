@@ -12,10 +12,10 @@ import {
 import SendIcon from '@mui/icons-material/Send';
 
 const SUBJECTS = [
-  { value: 'general',    label: 'General Inquiry' },
-  { value: 'consulting', label: 'Consulting Request' },
-  { value: 'course',     label: 'Course Enrollment' },
-  { value: 'hiring',     label: 'Job Opportunity' },
+  { value: 'general', label: 'Consulta general' },
+  { value: 'consulting', label: 'Solicitud de consultoría' },
+  { value: 'course', label: 'Inscripción a un curso' },
+  { value: 'hiring', label: 'Oportunidad laboral' },
 ];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,17 +38,17 @@ const ContactForm = () => {
     const next = { name: '', email: '', message: '' };
     let valid = true;
     if (!form.name.trim()) {
-      next.name = 'Name is required.'; valid = false;
+      next.name = 'El nombre es obligatorio.'; valid = false;
     }
     if (!form.email.trim()) {
-      next.email = 'Email is required.'; valid = false;
+      next.email = 'El correo electrónico es obligatorio.'; valid = false;
     } else if (!EMAIL_REGEX.test(form.email)) {
-      next.email = 'Please enter a valid email address.'; valid = false;
+      next.email = 'Ingresa una dirección de correo válida.'; valid = false;
     }
     if (!form.message.trim()) {
-      next.message = 'Message is required.'; valid = false;
+      next.message = 'El mensaje es obligatorio.'; valid = false;
     } else if (form.message.trim().length < 10) {
-      next.message = 'Message must be at least 10 characters.'; valid = false;
+      next.message = 'El mensaje debe tener al menos 10 caracteres.'; valid = false;
     }
     setErrors(next);
     return valid;
@@ -71,19 +71,22 @@ const ContactForm = () => {
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
           formRef.current,
-          EMAILJS_PUBLIC_KEY,
+          { publicKey: EMAILJS_PUBLIC_KEY },
         );
-        setSnackbar({ open: true, severity: 'success', message: "Message sent! I'll get back to you soon." });
+        setSnackbar({ open: true, severity: 'success', message: 'Mensaje enviado. Me pondré en contacto contigo pronto.' });
         setForm(initialForm);
         setErrors(initialErrors);
-      } catch {
-        setSnackbar({ open: true, severity: 'error', message: 'Failed to send message. Please try emailing me directly.' });
+      } catch (error) {
+        console.error(
+          `EmailJS no pudo enviar el mensaje. Estado: ${error?.status ?? 'desconocido'}. Detalle: ${error?.text ?? 'sin detalle'}`,
+        );
+        setSnackbar({ open: true, severity: 'error', message: 'No fue posible enviar el mensaje. Intenta escribirme directamente por correo.' });
       } finally {
         setLoading(false);
       }
     } else {
       const subjectLabel = SUBJECTS.find((s) => s.value === form.subject)?.label || form.subject;
-      const mailtoUrl = `mailto:cesar_munozocampo@hotmail.com?subject=${encodeURIComponent(subjectLabel)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
+      const mailtoUrl = `mailto:cesar_munozocampo@hotmail.com?subject=${encodeURIComponent(subjectLabel)}&body=${encodeURIComponent(`Nombre: ${form.name}\nCorreo electrónico: ${form.email}\n\n${form.message}`)}`;
       window.location.href = mailtoUrl;
     }
   };
@@ -92,7 +95,7 @@ const ContactForm = () => {
     <form ref={formRef} onSubmit={handleSubmit} noValidate className="contact-form">
       <TextField
         fullWidth
-        label="Name"
+        label="Nombre"
         name="name"
         value={form.name}
         onChange={handleChange}
@@ -102,7 +105,7 @@ const ContactForm = () => {
       />
       <TextField
         fullWidth
-        label="Email"
+        label="Correo electrónico"
         name="email"
         type="email"
         value={form.email}
@@ -114,7 +117,7 @@ const ContactForm = () => {
       <TextField
         fullWidth
         select
-        label="Subject"
+        label="Asunto"
         name="subject"
         value={form.subject}
         onChange={handleChange}
@@ -127,7 +130,7 @@ const ContactForm = () => {
         fullWidth
         multiline
         rows={5}
-        label="Message"
+        label="Mensaje"
         name="message"
         value={form.message}
         onChange={handleChange}
@@ -144,7 +147,7 @@ const ContactForm = () => {
         endIcon={loading ? <CircularProgress size={18} color="inherit" /> : <SendIcon />}
         className="contact-form-submit"
       >
-        {loading ? 'Sending\u2026' : 'Send Message'}
+        {loading ? 'Enviando\u2026' : 'Enviar mensaje'}
       </Button>
 
       <Snackbar

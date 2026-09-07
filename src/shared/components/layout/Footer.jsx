@@ -11,15 +11,15 @@ import {
   Button,
   Tooltip,
 } from '@mui/material';
-import { GitHub, LinkedIn, Email, KeyboardArrowUp } from '@mui/icons-material';
+import { GitHub, LinkedIn, KeyboardArrowUp } from '@mui/icons-material';
 import profile from '../../constants/profile';
 
 const navLinks = [
-  { text: 'About',    path: '/' },
-  { text: 'Services', path: '/services' },
-  { text: 'Courses',  path: '/courses' },
-  { text: 'Projects', path: '/projects' },
-  { text: 'Contact',  path: '/contact' },
+  { text: 'Biografía', path: '/' },
+  { text: 'Servicios', path: '/services' },
+  { text: 'Cursos', path: '/courses' },
+  { text: 'Proyectos', path: '/projects' },
+  { text: 'Contacto', path: '/contact' },
 ];
 
 const Footer = () => {
@@ -36,8 +36,8 @@ const Footer = () => {
               CMO
             </Typography>
             <Typography variant="body2" className="footer-tagline">
-              Senior Fullstack Developer � Consultant � Mentor<br />
-              Building scalable solutions since 2018.
+              Desarrollador full stack senior · Consultor · Mentor<br />
+              Creando soluciones escalables desde 2018.
             </Typography>
             <Stack direction="row" spacing={0.5}>
               <Tooltip title="GitHub">
@@ -60,23 +60,12 @@ const Footer = () => {
                   <LinkedIn fontSize="small" />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Email">
-                <IconButton
-                  aria-label="Email"
-                  size="small"
-                  component="a"
-                  className="footer-social-btn"
-                  href={`mailto:${profile.contact.email}`}
-                >
-                  <Email fontSize="small" />
-                </IconButton>
-              </Tooltip>
             </Stack>
           </Grid>
 
-          {/* Quick Links */}
+          {/* Enlaces rápidos */}
           <Grid item xs={12} md={4}>
-            <Typography variant="subtitle2" className="footer-col-heading">Quick Links</Typography>
+            <Typography variant="subtitle2" className="footer-col-heading">Enlaces rápidos</Typography>
             <Stack spacing={1.2}>
               {navLinks.map((link) => (
                 <Typography
@@ -91,11 +80,11 @@ const Footer = () => {
             </Stack>
           </Grid>
 
-          {/* Hire Me */}
+          {/* Trabajemos juntos */}
           <Grid item xs={12} md={4}>
-            <Typography variant="subtitle2" className="footer-col-heading">Hire Me</Typography>
+            <Typography variant="subtitle2" className="footer-col-heading">Trabajemos juntos</Typography>
             <Typography variant="body2" className="footer-cta-text">
-              Available for consulting, freelance projects, and full-time roles.
+              Disponible para consultoría, proyectos independientes y puestos de tiempo completo.
             </Typography>
             <Button
               variant="outlined"
@@ -103,7 +92,7 @@ const Footer = () => {
               className="footer-cta-btn"
               onClick={() => navigate('/contact')}
             >
-              Contact Me
+              Contáctame
             </Button>
           </Grid>
         </Grid>
@@ -112,11 +101,11 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <Typography variant="body2" className="footer-copyright">
-            &copy; {year} Cesar Mu�oz Ocampo. All rights reserved.
+            &copy; {year} Cesar Muñoz Ocampo. Todos los derechos reservados.
           </Typography>
-          <Tooltip title="Back to top">
+          <Tooltip title="Volver al inicio">
             <IconButton
-              aria-label="Back to top"
+              aria-label="Volver al inicio"
               size="small"
               className="footer-back-top"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

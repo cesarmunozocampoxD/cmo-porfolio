@@ -20,13 +20,13 @@ const Services = () => {
     <section className="services-root">
       <Container maxWidth="lg">
         <div className="services-header">
-          <Typography variant="overline" className="services-overline">What I Offer</Typography>
+          <Typography variant="overline" className="services-overline">Lo que ofrezco</Typography>
           <Typography variant="h3" component="h2" className="services-title">
-            Consulting Services
+            Servicios de consultoría
           </Typography>
           <Typography variant="body1" color="text.secondary" className="services-subtitle">
-            Available for freelance projects, technical consulting, and architecture reviews.
-            Let&apos;s build something great together.
+            Disponible para proyectos independientes, consultoría técnica y revisiones de
+            arquitectura. Construyamos juntos una gran solución.
           </Typography>
         </div>
 
@@ -66,7 +66,7 @@ const Services = () => {
                       className="services-cta-btn"
                       onClick={() => navigate('/contact')}
                     >
-                      Request Service
+                      Solicitar servicio
                     </Button>
                   </div>
                 </Card>

@@ -2,35 +2,43 @@ import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
 import CloudIcon from '@mui/icons-material/Cloud';
 import SchoolIcon from '@mui/icons-material/School';
+import ExploreIcon from '@mui/icons-material/Explore';
 
 const services = [
   {
     icon: CodeIcon,
-    title: 'Fullstack Web Development',
+    title: 'Desarrollo web full stack',
     description:
-      'End-to-end development of modern web applications using React, Java Spring Boot, and REST APIs. From UI design to database architecture.',
-    highlights: ['React / JavaScript', 'Java Spring Boot', 'REST APIs', 'Responsive Design'],
+      'Desarrollo integral de aplicaciones web modernas con React, Java, Spring Boot y APIs REST, desde el diseño de la interfaz hasta la arquitectura de bases de datos.',
+    highlights: ['React / JavaScript', 'Java y Spring Boot', 'APIs REST', 'Diseño adaptable'],
   },
   {
     icon: StorageIcon,
-    title: 'Backend & API Architecture',
+    title: 'Arquitectura backend y de APIs',
     description:
-      'Design and implementation of scalable microservices, RESTful APIs, and database schemas optimised for performance and maintainability.',
-    highlights: ['Microservices', 'PostgreSQL / MySQL / MongoDB', 'Redis Caching', 'API Design'],
+      'Diseño e implementación de microservicios escalables, APIs REST y esquemas de bases de datos optimizados para el rendimiento y la mantenibilidad.',
+    highlights: ['Microservicios', 'PostgreSQL / MySQL / MongoDB', 'Caché con Redis', 'Diseño de APIs'],
   },
   {
     icon: CloudIcon,
-    title: 'Cloud Infrastructure (GCP / AWS)',
+    title: 'Infraestructura en la nube (GCP / AWS)',
     description:
-      'Cloud setup, CI/CD pipelines, containerisation with Docker & Kubernetes, and deployment on Google Cloud Platform or AWS.',
-    highlights: ['GCP & AWS', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Cloud Security'],
+      'Configuración de infraestructura en la nube, pipelines de CI/CD, contenerización con Docker y Kubernetes, y despliegue en Google Cloud Platform o AWS.',
+    highlights: ['GCP y AWS', 'Docker y Kubernetes', 'Pipelines de CI/CD', 'Seguridad en la nube'],
   },
   {
     icon: SchoolIcon,
-    title: 'Code Review & Tech Mentoring',
+    title: 'Revisión de código y mentoría técnica',
     description:
-      'Hands-on code reviews, architecture feedback, and 1-on-1 mentoring sessions for developers who want to level up their skills.',
-    highlights: ['Code Reviews', '1-on-1 Mentoring', 'Best Practices', 'Career Guidance'],
+      'Revisiones prácticas de código, retroalimentación sobre arquitectura y sesiones individuales de mentoría para desarrolladores que buscan fortalecer sus habilidades.',
+    highlights: ['Revisión de código', 'Mentoría individual', 'Buenas prácticas', 'Orientación profesional'],
+  },
+  {
+    icon: ExploreIcon,
+    title: 'Asesorías personalizadas en tecnología y software',
+    description:
+      'Sesiones individuales para personas que desean iniciar o reorientar su camino hacia una carrera relacionada con tecnología, sistemas o desarrollo de software. Te ayudo a comprender las opciones y construir un plan realista de acuerdo con tus objetivos.',
+    highlights: ['Orientación de carrera', 'Ruta de aprendizaje', 'Áreas de especialización', 'Plan personalizado'],
   },
 ];
 

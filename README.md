@@ -169,6 +169,23 @@ npm run lint         # Run ESLint
 
 ## 🌐 Deployment
 
+### Configurar el formulario de contacto con EmailJS
+
+El formulario utiliza EmailJS para enviar mensajes sin abrir el cliente de correo del visitante. Si las variables no están configuradas, conserva como respaldo el enlace `mailto:`.
+
+1. En EmailJS, conecta el servicio de correo que recibirá los mensajes.
+2. Crea una plantilla con las variables `{{name}}`, `{{email}}`, `{{subject}}` y `{{message}}`.
+3. Copia `.env.example` como `.env.local` y reemplaza los valores con el Service ID, Template ID y Public Key de tu cuenta.
+4. Reinicia el servidor de desarrollo para que Vite cargue las variables.
+
+```env
+VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
+VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
+VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
+```
+
+Las variables `VITE_*` se incorporan durante la compilación. Configúralas también en el entorno desde el que ejecutes `npm run build` antes de publicar en GitHub Pages.
+
 ### GitHub Pages Deployment
 
 1. **Build the project**

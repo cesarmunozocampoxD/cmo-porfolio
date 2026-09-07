@@ -21,13 +21,13 @@ const Courses = () => {
     <section className="courses-root">
       <Container maxWidth="lg">
         <div className="courses-header">
-          <Typography variant="overline" className="courses-overline">Learn From Experience</Typography>
+          <Typography variant="overline" className="courses-overline">Aprende desde la experiencia</Typography>
           <Typography variant="h3" component="h2" className="courses-title">
-            Courses &amp; Training
+            Cursos y capacitación
           </Typography>
           <Typography variant="body1" color="text.secondary" className="courses-subtitle">
-            Practical, hands-on courses taught by a working senior engineer. Learn the tools and
-            patterns used in real production systems.
+            Cursos prácticos impartidos desde la experiencia profesional. Aprende las herramientas
+            y patrones utilizados en sistemas reales de producción.
           </Typography>
         </div>
 
@@ -53,7 +53,7 @@ const Courses = () => {
                       label={course.status}
                       size="small"
                       variant="outlined"
-                      color={course.status === 'Available' ? 'success' : 'default'}
+                      color={course.status === 'Disponible' ? 'success' : 'default'}
                       className="courses-status-badge"
                     />
                   </Stack>
@@ -84,12 +84,12 @@ const Courses = () => {
 
                 <div className="courses-card-action">
                   <Button
-                    variant={course.status === 'Available' ? 'contained' : 'outlined'}
+                    variant={course.status === 'Disponible' ? 'contained' : 'outlined'}
                     fullWidth
                     className="courses-cta-btn"
                     onClick={() => navigate('/contact')}
                   >
-                    {course.status === 'Available' ? 'Contact to Enroll' : 'Notify Me'}
+                    {course.status === 'Disponible' ? 'Contactar para inscribirme' : 'Notificarme'}
                   </Button>
                 </div>
               </Card>

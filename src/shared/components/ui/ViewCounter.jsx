@@ -25,10 +25,10 @@ const ViewCounter = ({
 
   if (error) {
     return (
-      <Tooltip title={`Error loading view count: ${error}`}>
+      <Tooltip title={`Error al cargar el número de visitas: ${error}`}>
         <div className={cls}>
           <ErrorIcon fontSize="small" color="error" />
-          <Typography variant="body2" className="vc-text">Views unavailable</Typography>
+          <Typography variant="body2" className="vc-text">Visitas no disponibles</Typography>
         </div>
       </Tooltip>
     );
@@ -41,7 +41,7 @@ const ViewCounter = ({
         <Skeleton variant="text" width={60} height={20} className="vc-skeleton" />
       ) : (
         <Typography variant="body2" className="vc-text">
-          {formatViewCount(viewCount)} {viewCount === 1 ? 'view' : 'views'}
+          {formatViewCount(viewCount)} {viewCount === 1 ? 'visita' : 'visitas'}
         </Typography>
       )}
     </div>
